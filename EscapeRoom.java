@@ -8,6 +8,8 @@ public static void main (String[] args) {
  String[][] answers = new answers[4][18];
   
   questions[0][0] = "Πλάσμα που χαρακτηρίζεται από θεϊκή ομορφιά και υπέροχη φωνή";
+  questions[0][1] =
+  questions[0][2] =
   
   
  
