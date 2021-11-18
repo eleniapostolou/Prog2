@@ -1,7 +1,7 @@
 package mysteryLab;
 import java.util.Scanner;
 
-public class Crossword {
+public class Crossword extends Game {
    
 	private Scanner input = new Scanner(System.in);
 	private int success;
@@ -12,13 +12,13 @@ public class Crossword {
 		roomName=name;
 	}
 	
-	public boolean playGame() {
+	public boolean playGame(int roomNumber) {
 		
 		int qnumber;
 		
 		do {
 			for(int i=0;i<4;i++) {
-				System.out.println(questions[i]);
+				System.out.println(questions[roomNumber][i]);
 			}
 			System.out.println("Διαλέξτε την ερώτηση που θέλετε να απαντήσετε!");
 			
@@ -30,7 +30,7 @@ public class Crossword {
 			}while(qnumber!=1 || qnumber!=2 || qnumber!=3 || qnumber!=4);
 			
 			
-			if(checkAnswers(qnumber);) {
+			if(checkAnswers(qnumber, roomNumber)) {
 				success++;
 				System.out.println("Συγχαρητήρια! Βρήκατε την λέξη!");
 			}else {
@@ -44,13 +44,13 @@ public class Crossword {
 	
 	
 	
-	public boolean checkAnswers(int num) {
+	public boolean checkAnswers(int num, int roomNumber) {
 		String answer;
 		answer=input.nextLine();
 		String change = answer.toUpperCase();
-		if(answers[num-1]==change){
+		if(answers[roomNumber][num-1]==change){
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
