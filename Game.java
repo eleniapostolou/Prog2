@@ -1,9 +1,9 @@
 package mysteryLab;
 
-public class Game {
+abstract public class Game {
 
-   String[][] questions = new questions[4][18];
-   String[][] answers = new answers[4][9];
+   protected String[][] questions = new questions[4][18];
+   protected String[][] answers = new answers[4][9];
   
    questions[0][0] = "Πλάσμα που χαρακτηρίζεται από θεϊκή ομορφιά και υπέροχη φωνή";
    questions[0][1] = "Είναι τα αποτελέσματα  από την χρήση μαγικών βοτάνων που προκαλούν την απώλεια της αίσθησης του χωροχρόνου"; 
