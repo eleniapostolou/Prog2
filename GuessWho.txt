@@ -33,7 +33,7 @@ public class GuessWho {
 										JOptionPane.showMessageDialog(null, message);
 								QuestionCount++;
 								lives++;
-								}
+								} 
 							} 	else {
 									outofGuesses = true;
 						}
