@@ -4,13 +4,13 @@ import java.util.Scanner ;
 
 public class Gallows extends Game{
 
-		 private String word= answers[k][5];
+		 private String word ;
 		 private char [] letters= new char[ word.length()];
 		 private char [] temp = new char[ word.length()];
 		 private int lives;
 		 private int leftlet;
 
-	public Gallows() {
+	public Gallows(int room) {//orisma to domatio
 
 		temp[0]=word.charAt(0);
 		for( int i = 1 ; i < word.length() ; i ++ ) {
@@ -21,7 +21,8 @@ public class Gallows extends Game{
 		}//for
 		lives = 5;
 		leftlet = word.length() - 1;
-
+		word= answers[room][5];
+		
 	}// constractor
 
 	public void startGame() {
