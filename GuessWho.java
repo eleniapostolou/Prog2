@@ -56,8 +56,7 @@ public class GuessWho {
                                 String message = String.format("You Won!");
                                 JOptionPane.showMessageDialog(null, message);
                          }
-
-                 } else {
+		 } else {
                          break;
                  }
             }
