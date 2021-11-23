@@ -4,7 +4,7 @@ import java.util.Scanner ;
 
 public class Gallows extends Game{
 
-		 private String word= questions[10];
+		 private String word= answers[k][5];
 		 private char [] letters= new char[ word.length()];
 		 private char [] temp = new char[ word.length()];
 		 private int lives;
@@ -71,8 +71,7 @@ public class Gallows extends Game{
 		} else {
 
 			System.out.println("Σωστή απάντηση! Περνάτε στο επόμενο επίπεδο");
-			System.out.println(answers[10]); // assuming that this cage has the explanation we need
-
+			
 		}
 
 	} //StartGame
