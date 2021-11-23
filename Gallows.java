@@ -1,6 +1,6 @@
 import java.util.Scanner ;
 
-public class Gallows{
+public class Gallows extends Game{
 
 		 private String word= questions[10];
 		 private char [] letters= new char[ word.length()];
