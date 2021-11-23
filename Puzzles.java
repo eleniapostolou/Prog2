@@ -2,7 +2,7 @@ package mysterylab;
 
 import java.util.Scanner;
 
-public class Puzzles {
+public class Puzzles extends Game {
 
 	private int row = 1;
 
