@@ -1,4 +1,6 @@
+package mysteryLab;
 import javax.swing.JOptionPane;
+
 public class GuessWho {
 
 	{	
