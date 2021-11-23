@@ -1,3 +1,5 @@
+package mysteryLab ;
+
 import java.util.Scanner ;
 
 public class Gallows extends Game{
@@ -22,7 +24,7 @@ public class Gallows extends Game{
 
 	}// constractor
 
-	public void StartGame() {
+	public void startGame() {
 
 		Scanner input = new Scanner( System.in );
 		boolean y ;
