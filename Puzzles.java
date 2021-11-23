@@ -15,7 +15,7 @@ public class Puzzles {
 	public void getPuzzle(int room) { //To room einai to dwmatio kai i the to dexomaste ws orisma apo ti main i an ftiaksoume klasi dwmatiou na to exoume metavliti klasis na to pairnoume apeutheias.
 
 
-		System.out.println("questions[room][Puzzles.getRow]"); //To row einai se poio grifo kata seira vriskomaste gia na prosdioristei kai i thesi tou ston pinaka questions
+		System.out.println(questions[room][getRow()]); //To row einai se poio grifo kata seira vriskomaste gia na prosdioristei kai i thesi tou ston pinaka questions
 	}
 
 	public void getResult(int room) {
@@ -27,19 +27,20 @@ public class Puzzles {
 		while (flag == false) {
 			answer = in.next();
 
-			if (answer == "answer[room][Puzzles.getRow]" ) {
+			if (answer == answer[room][getRow()] ) {
 				System.out.println(" Crongatulations! You are correct! We move to the next puzzle");
 				flag = true;
-				row = Puzzles.setRow();
+				row = setRow();
 			} else {
 				System.out.println(" Oops.. You missed that! Try again!");
 			}
 		}
 	}
 
-	public void setRow() {
+	public int setRow() {
 
 		row = row + 1;
+		return row;
 	}
 
 	public int getRow() {
