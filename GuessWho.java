@@ -32,9 +32,10 @@ public class GuessWho {
     }
     
     public void startGuessing() {
-	    while(!guess.equals(secretWord)&& !outofGuesses) {
+	    String guess;
+	    while(!guess.equals(name)&& !outofGuesses) {
 		 if(lives<3 && /*timer>0)*/ {
-			 if(guessCount < guessLimit) {
+			 if(QuestionCount < guessLimit) {
                                  JOptionPane.showMessageDialog(null, Questions[QuestionCount]);
                                  String who = JOptionPane.showInputDialog(null, "Enter name");
                                  if(who == name) {
