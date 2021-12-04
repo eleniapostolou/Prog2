@@ -27,7 +27,7 @@ public class Puzzles extends Game {
 		while (flag == false) {
 			answer = in.next();
 
-			if (answer == answer[room][getRow] ) {
+			if (answer == answers[room][getRow] ) {
 				System.out.println(" Συγχαριτήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				flag = true;
 				row = setRow();
