@@ -48,15 +48,15 @@ public class Puzzles extends Game {
 		return row;
 	}
 
-	public void playPuzzle() { //This is the method that we are going to call in main in order to play the game.
+	public void playPuzzle(int room) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		instructions();
 
 		while (counter < 3) {
 
-			getPuzzle(int room);
-			getResult(int room);
+			getPuzzle(room);
+			getResult(room);
 		}
 	}
 
