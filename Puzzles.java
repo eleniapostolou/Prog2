@@ -27,7 +27,7 @@ public class Puzzles extends Game {
 		while (flag == false) {
 			answer = in.next();
 
-			if (answer == answers[room][getColumn] ) {
+			if (answer == answers[room][getColumn - 9] ) {
 				System.out.println(" Συγχαριτήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				flag = true;
 				column = setColumn();
