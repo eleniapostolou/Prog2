@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Puzzles extends Game {
 
-	private int row = 15; //Refers to the position of the questions and answers at these tables.
+	private int column = 15; //Refers to the position of the questions and answers at these tables.
 	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 
 	public void instructions() {
@@ -14,7 +14,7 @@ public class Puzzles extends Game {
 	}
 
 	public void getPuzzle(int room) { //We get the puzzle for each room.
-		System.out.println(questions[room][getRow]); 
+		System.out.println(questions[room][getColumn]); 
 
 	public void getResult(int room) { //This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
 		//We use a boolean flag in order to stop the loop
@@ -27,10 +27,10 @@ public class Puzzles extends Game {
 		while (flag == false) {
 			answer = in.next();
 
-			if (answer == answers[room][getRow] ) {
+			if (answer == answers[room][getColumn] ) {
 				System.out.println(" Συγχαριτήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				flag = true;
-				row = setRow();
+				column = setColumn();
 				counter = counter + 1;
 			} else {
 				System.out.println(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
@@ -38,14 +38,14 @@ public class Puzzles extends Game {
 		}
 	}
 
-	public int setRow() { //We update our location at the tables.
+	public int setColumn() { //We update our location at the tables.
 
-		row = row + 1;
-		return row;
+		column = column + 1;
+		return column;
 	}
 
-	public int getRow() {
-		return row;
+	public int getColumn() {
+		return column;
 	}
 
 	public void playPuzzle(int room) { //This is the method that we are going to call in main in order to play the game.
