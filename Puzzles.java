@@ -4,22 +4,21 @@ import java.util.Scanner;
 
 public class Puzzles extends Game {
 
-	private int row = 15;
-	private int counter = 0;
+	private int row = 15; //Refers to the position of the questions and answers at these tables.
+	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 
 	public void instructions() {
-		System.out.println("Congratulations! You reached the final level!");
-		System.out.println("Now to finally escape the room you need to solve those three puzzles, using the given hints from the previous levels.");
-		System.out.println("Use your remaining time wisely and good luck! Let's get started! ");
+		System.out.println("Συγχαριτήρια! Έφτασες στο τελευταίο επίπεδο!");
+		System.out.println("Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια.");
+		System.out.println("Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! ");
 	}
 
-	public void getPuzzle(int room) { //To room einai to dwmatio kai i the to dexomaste ws orisma apo ti main i an ftiaksoume klasi dwmatiou na to exoume metavliti klasis na to pairnoume apeutheias.
+	public void getPuzzle(int room) { //We get the puzzle for each room.
+		System.out.println(questions[room][getRow]); 
 
-
-		System.out.println(questions[room][getRow]); //To row einai se poio grifo kata seira vriskomaste gia na prosdioristei kai i thesi tou ston pinaka questions
-	}
-
-	public void getResult(int room) {
+	public void getResult(int room) { //This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
+		//We use a boolean flag in order to stop the loop
+		//We use a counter in order to always keep track in which puzzle the player currently is.
 
 		Scanner in = new Scanner(System.in);
 		boolean flag = false;
@@ -29,17 +28,17 @@ public class Puzzles extends Game {
 			answer = in.next();
 
 			if (answer == answer[room][getRow] ) {
-				System.out.println(" Crongatulations! You are correct! We move to the next puzzle");
+				System.out.println(" Συγχαριτήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				flag = true;
 				row = setRow();
 				counter = counter + 1;
 			} else {
-				System.out.println(" Oops.. You missed that! Try again!");
+				System.out.println(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
 			}
 		}
 	}
 
-	public int setRow() {
+	public int setRow() { //We update our location at the tables.
 
 		row = row + 1;
 		return row;
@@ -49,9 +48,10 @@ public class Puzzles extends Game {
 		return row;
 	}
 
-	public void playPuzzle() {
+	public void playPuzzle() { //This is the method that we are going to call in main in order to play the game.
+		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
-		int counter = 0;
+		instructions();
 
 		while (counter < 3) {
 
