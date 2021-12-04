@@ -12,9 +12,9 @@ public class Crossword extends Game {
 	}
 	
 	public void printInstructions() {
-		System.out.println("Καλώς ήρθατε στο Escape room: Greek mythology Edition ");
-		System.out.println("Επιλέξατε να αποδράσετε από το δωμάτιο του/της " + roomName);
-		System.out.println("Ο χρόνος σας ξεκινάει από τώρα!");
+	    System.out.println("Καλώς ήρθατε στο Escape room: Greek mythology Edition ");
+	    System.out.println("Επιλέξατε να αποδράσετε από το δωμάτιο του/της " + roomName);
+	    System.out.println("Ο χρόνος σας ξεκινάει από τώρα!");
 	    System.out.println("Η πρώτη δοκιμάσια απαιτεί να αξιοποιήσετε το γνωστικό σας υπόβαθρο και να λύσετε το παρακάτω σταυρόλεξο");
 	    System.out.println("Οι κανόνες του παιχνιδιού είναι η εξής:");
 	    System.out.println("Πρέπει να ανακαλύψετε και τις 4 κρυμμένες λέξεις προκειμένου να προχωρήσετε στο επόμενο στάδιο.");
