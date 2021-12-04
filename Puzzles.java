@@ -1,20 +1,20 @@
-package mysterylab;
-
+package mysteryLab;
 import java.util.Scanner;
 
 public class Puzzles extends Game {
-
+	
 	private int column = 15; //Refers to the position of the questions and answers at these tables.
 	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 
 	public void instructions() {
-		System.out.println("Συγχαριτήρια! Έφτασες στο τελευταίο επίπεδο!");
+		System.out.println("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο!");
 		System.out.println("Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια.");
 		System.out.println("Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! ");
 	}
 
 	public void getPuzzle(int room) { //We get the puzzle for each room.
-		System.out.println(questions[room][getColumn]); 
+		System.out.println(questions[room][getColumn()]); 
+	}
 
 	public void getResult(int room) { //This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
 		//We use a boolean flag in order to stop the loop
@@ -25,10 +25,11 @@ public class Puzzles extends Game {
 		String answer;
 
 		while (flag == false) {
-			answer = in.next();
+			answer = in.nextLine();
+			String change = answer.toUpperCase();
 
-			if (answer == answers[room][getColumn - 9] ) {
-				System.out.println(" Συγχαριτήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
+			if (change.equals(answers[room][getColumn() - 9])) {
+				System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				flag = true;
 				column = setColumn();
 				counter = counter + 1;
@@ -64,9 +65,5 @@ public class Puzzles extends Game {
 
 
 }
-
-
-
-
 
 
