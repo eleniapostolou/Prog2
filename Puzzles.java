@@ -1,5 +1,6 @@
 package mysteryLab;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class Puzzles extends Game {
 	
