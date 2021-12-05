@@ -30,10 +30,11 @@ public class Puzzles extends Game {
 
 			if (change.equals(answers[room][getColumn() - 9])) {
 				
+				flag = true;
 				column = setColumn();
 				counter = counter + 1;
 				
-				if (counter < 2) {
+				if (counter < 3) {
 					System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				} else {
 					System.out.println(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
