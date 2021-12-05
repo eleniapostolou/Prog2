@@ -68,7 +68,7 @@ public class Puzzles extends Game {
 			getResult(room);
 		}
 		
-		getTimer();
+		t.getTimer();
 	}
 
 
