@@ -4,8 +4,8 @@
 
 /**
 *The class Crossword extends superclass Game (main class). The class implements the crossword puzzle game.
-The Class displays 4 questions to which the user must give the correct answer in order to move on to the next
-level of the game.
+*The Class displays 4 questions to which the user must give the correct answer in order to move on to the next
+*level of the game.
 *
 *
 *@version  _____
