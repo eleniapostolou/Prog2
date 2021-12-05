@@ -59,12 +59,16 @@ public class Puzzles extends Game {
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		instructions();
+		
+		Timer t = new Timer();
 
 		while (counter < 3) {
 
 			getPuzzle(room);
 			getResult(room);
 		}
+		
+		getTimer();
 	}
 
 
