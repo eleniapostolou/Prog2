@@ -1,6 +1,5 @@
 package mysteryLab;
 import java.util.Scanner;
-import java.util.Timer;
 
 public class Puzzles extends Game {
 	
@@ -61,7 +60,6 @@ public class Puzzles extends Game {
 
 		instructions();
 		
-		Timer t = new Timer();
 
 		while (counter < 3) {
 
@@ -69,7 +67,6 @@ public class Puzzles extends Game {
 			getResult(room);
 		}
 		
-		t.getTimer();
 	}
 
 
