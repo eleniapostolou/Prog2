@@ -1,30 +1,47 @@
-package mysteryLab ;
+/*Gallows.java
+ *Copyright 2021 mysteryLab
+ */
 
+/**
+*The class Gallows extends superclass Game (main class). The class implements the gallows puzzle game.
+*The Class expects the user to guess correctly the letters of a word in order to move on to the next
+*level of the game.
+*
+*
+*@version  _____
+*@author EFTHYMIOS KONTOES , KOSTANTINOS SPATHAS 
+*/
+
+package mysteryLab ;
 import java.util.Scanner ;
 
 public class Gallows extends Game{
 
+                 // Class fields
 		 private String word ;
 		 private char [] letters= new char[ word.length()];
 		 private char [] temp = new char[ word.length()];
 		 private int lives;
 		 private int leftlet;
 
-	public Gallows(int room) {//orisma to domatio
+	
+	// Constructor
+	public Gallows(int room) {
 
 		temp[0]=word.charAt(0);
 		for( int i = 1 ; i < word.length() ; i ++ ) {
-			temp[i] = '_' ;
+			temp[i] = '_' ; // it creates a table with only the first the letter of the word
 		}
 		for( int i=0 ; i < word.length() ; i ++) {
-					letters[i] =word.charAt(i);//it creates a char table wich contains the letters of the word
-		}//for
+			letters[i] =word.charAt(i);//it creates a char table wich contains the letters of the word
+		}
 		lives = 5;
 		leftlet = word.length() - 1;
 		word= answers[room][5];
 		
-	}// constractor
+	}
 
+	// Method startGame: the main implementation of the Gallows game
 	public void startGame() {
 
 		Scanner input = new Scanner( System.in );
@@ -46,15 +63,18 @@ public class Gallows extends Game{
 		
 			String a ;
 			a=input.next();
-			while(a.length !=1)do{ //??a a???µ??s
+			
+			// data validation check
+			while(a.length() !=1) { 
 
 				System.out.println("Μη έγκυρη προσπάθεια ! Προσπαθήστε χρησιμοποιώντας μόνο ένα γράμμα");
 				a=input.next();
 			}
 			char gram=a.charAt(0);
 			y= search(gram,temp,letters,word);
+			
+			// It keeps his guesses in check and it updates the proper variables
 			if(y==true){
-
 				show(temp ,word);
 				leftlet = leftlet -1 ;
 			} else {
@@ -64,7 +84,8 @@ public class Gallows extends Game{
 			}
 
 		}while( lives != 0 && leftlet!=0 );
-
+		
+                // It prints the result of his effort
 		if(lives == 0){
 
 			System.out.println("Δυστυχώς δεν τα καταφέρατε , η λέξη ήταν "+ word );
@@ -75,16 +96,18 @@ public class Gallows extends Game{
 			
 		}
 
-	} //StartGame
-
+	} 
+        
+	// Method show : It prints the right guesses of the user and what is left to guess
 	public static void show(char[] temp, String word) {
 
 		for( int i = 0 ; i < word.length() ; i ++ ) {
 			System.out.print(temp[i]);
 		}
 
-	}//show
+	}
 
+	// Method search : It checks if the guess of the user is right and if it's so , it returns true
 	public static boolean search(char g,char[] temp,char[] letters,String word) {
 
 		boolean t = false ;
@@ -98,9 +121,7 @@ public class Gallows extends Game{
 		}
 		return t ;
 
-	}//search
+	}
 
 
-
-
-}//class
+}
