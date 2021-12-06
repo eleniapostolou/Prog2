@@ -20,37 +20,37 @@ public class PlayGame {
 		int room = 0;
 		String roomName = null;
 
-		System.out.println(" Καλωσορισες στο δωμάτιο. Στόχος σου είναι να δραπετεύσεις ξεπερνώντας τρεις δοκιμασίες.");
-		System.out.println(" Στην αρχή κάθε δοκιμασίες θα σου δίνονται οδηγίες.");
-		System.out.println(" Έχεις 20 λεπτά για να δραπετεύσεις!");
-		System.out.println(" Αρχικά διάλεξε τον χαρακτήρα σου πληκτρολογώντας τον αντίστοιχο αριθμό.");
-		System.out.println(" 1. Κίρκη");
-		System.out.println(" 2. Θησέας");
-		System.out.println(" 3. Περσεφόνη");
-		System.out.println(" 4. Ίκαρος");
+		System.out.println(" ΞΞ±Ξ»Ο‰ΟƒΞΏΟΞΉΟƒΞµΟ‚ ΟƒΟ„ΞΏ Ξ΄Ο‰ΞΌΞ¬Ο„ΞΉΞΏ. Ξ£Ο„ΟΟ‡ΞΏΟ‚ ΟƒΞΏΟ… ΞµΞ―Ξ½Ξ±ΞΉ Ξ½Ξ± Ξ΄ΟΞ±Ο€ΞµΟ„ΞµΟΟƒΞµΞΉΟ‚ ΞΎΞµΟ€ΞµΟΞ½ΟΞ½Ο„Ξ±Ο‚ Ο„ΟΞµΞΉΟ‚ Ξ΄ΞΏΞΊΞΉΞΌΞ±ΟƒΞ―ΞµΟ‚.");
+		System.out.println(" Ξ£Ο„Ξ·Ξ½ Ξ±ΟΟ‡Ξ® ΞΊΞ¬ΞΈΞµ Ξ΄ΞΏΞΊΞΉΞΌΞ±ΟƒΞ―ΞµΟ‚ ΞΈΞ± ΟƒΞΏΟ… Ξ΄Ξ―Ξ½ΞΏΞ½Ο„Ξ±ΞΉ ΞΏΞ΄Ξ·Ξ³Ξ―ΞµΟ‚.");
+		System.out.println(" ΞΟ‡ΞµΞΉΟ‚ 20 Ξ»ΞµΟ€Ο„Ξ¬ Ξ³ΞΉΞ± Ξ½Ξ± Ξ΄ΟΞ±Ο€ΞµΟ„ΞµΟΟƒΞµΞΉΟ‚!");
+		System.out.println(" Ξ‘ΟΟ‡ΞΉΞΊΞ¬ Ξ΄ΞΉΞ¬Ξ»ΞµΞΎΞµ Ο„ΞΏΞ½ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΞ± ΟƒΞΏΟ… Ο€Ξ»Ξ·ΞΊΟ„ΟΞΏΞ»ΞΏΞ³ΟΞ½Ο„Ξ±Ο‚ Ο„ΞΏΞ½ Ξ±Ξ½Ο„Ξ―ΟƒΟ„ΞΏΞΉΟ‡ΞΏ Ξ±ΟΞΉΞΈΞΌΟ.");
+		System.out.println(" 1. ΞΞ―ΟΞΊΞ·");
+		System.out.println(" 2. ΞΞ·ΟƒΞ­Ξ±Ο‚");
+		System.out.println(" 3. Ξ ΞµΟΟƒΞµΟ†ΟΞ½Ξ·");
+		System.out.println(" 4. ΞΞΊΞ±ΟΞΏΟ‚");
 
 		do {
 			room = input.nextInt();
 
 			if (room!=1 & room!=2 & room!=3 & room!=4) {
-				System.out.println(" Ο αριθμός που εισήγαγες δεν αντιστοιχεί σε κάποιο χαρακτήρα.");
-				System.out.println(" Προσ΄πάθησε ξανά! Θυμήσου:");
-				System.out.println(" 1. Κίρκη");
-				System.out.println(" 2. Θησέας");
-				System.out.println(" 3. Περσεφόνη");
-				System.out.println(" 4. Ίκαρος");
+				System.out.println(" Ξ Ξ±ΟΞΉΞΈΞΌΟΟ‚ Ο€ΞΏΟ… ΞµΞΉΟƒΞ®Ξ³Ξ±Ξ³ΞµΟ‚ Ξ΄ΞµΞ½ Ξ±Ξ½Ο„ΞΉΟƒΟ„ΞΏΞΉΟ‡ΞµΞ― ΟƒΞµ ΞΊΞ¬Ο€ΞΏΞΉΞΏ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΞ±.");
+				System.out.println(" Ξ ΟΞΏΟƒΞ„Ο€Ξ¬ΞΈΞ·ΟƒΞµ ΞΎΞ±Ξ½Ξ¬! ΞΟ…ΞΌΞ®ΟƒΞΏΟ…:");
+				System.out.println(" 1. ΞΞ―ΟΞΊΞ·");
+				System.out.println(" 2. ΞΞ·ΟƒΞ­Ξ±Ο‚");
+				System.out.println(" 3. Ξ ΞµΟΟƒΞµΟ†ΟΞ½Ξ·");
+				System.out.println(" 4. ΞΞΊΞ±ΟΞΏΟ‚");
 			}
 
 		} while(room!=1 & room!=2 & room!=3 & room!=4)
 
 		if (room == 1) {
-			roomName = " Κίρκη";
+			roomName = " ΞΞ―ΟΞΊΞ·";
 		} else if (room == 2) {
-			roomName = "Θησέας";
+			roomName = "ΞΞ·ΟƒΞ­Ξ±Ο‚";
 		}else if (room == 3) {
-			roomName = "Περσεφόνη";
+			roomName = "Ξ ΞµΟΟƒΞµΟ†ΟΞ½Ξ·";
 		}else {
-			roomName = "Ίκαρος";
+			roomName = "ΞΞΊΞ±ΟΞΏΟ‚";
 		}
 
 		Crossword crossword = new Crossword(roomName);
@@ -58,7 +58,7 @@ public class PlayGame {
 		Gallows gallows = new Gallows(room);
 		Puzzles puzzles = new puzzles();
 
-		System.out.println(" Ο χρόνος σου ξεκινάει από τώρα! Χρησιμοποίησέ τον έξυπνα!");
+		System.out.println(" Ξ Ο‡ΟΟΞ½ΞΏΟ‚ ΟƒΞΏΟ… ΞΎΞµΞΊΞΉΞ½Ξ¬ΞµΞΉ Ξ±Ο€Ο Ο„ΟΟΞ±! Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ­ Ο„ΞΏΞ½ Ξ­ΞΎΟ…Ο€Ξ½Ξ±!");
 
 		stopwatch.start();
 		Fibonacci(45);
