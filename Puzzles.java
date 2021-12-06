@@ -1,8 +1,16 @@
-// This class -Puzzles- extends the superclass Game. It implements the game puzzles, the final game to escape the room. 
-// The player needs to answer the three puzzles in his/her remaining time.
-// This class contains six methods.
+/*Puzzles.java
+ *Copyright 2021 mysteryLab
+ */
 
-@Author: Eleni Apostolou, Konstantina Sotiropoulou
+/**
+*This class -Puzzles- extends the superclass Game. It implements the game puzzles, the final game to escape the room. 
+*The player needs to answer the three puzzles in his/her remaining time.
+*This class contains six methods.
+*
+*
+*@version ____
+*@author ELENI APOSTOLOU, KONSTANTINA SOTIROPOULOU
+*/
 
 
 package mysteryLab;
