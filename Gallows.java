@@ -66,7 +66,7 @@ public class Gallows extends Game{
 		
 			String a ;
 			a=input.next();
-			
+			a=a.toUpperCase();
 			// data validation check
 			while(a.length() !=1) { 
 
