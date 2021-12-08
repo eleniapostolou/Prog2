@@ -19,15 +19,18 @@ public class Gallows extends Game{
 
                  // Class fields
 		 private String word ;
-		 private char [] letters= new char[ word.length()];
-		 private char [] temp = new char[ word.length()];
+		 private char [] letters;
+		 private char [] temp ;
 		 private int lives;
 		 private int leftlet;
 
 	
 	// Constructor
 	public Gallows(int room) {
-
+		
+		word= answers[room][5];
+		letters= new char[ word.length()];
+		temp = new char[ word.length()];
 		temp[0]=word.charAt(0);
 		for( int i = 1 ; i < word.length() ; i ++ ) {
 			temp[i] = '_' ; // it creates a table with only the first the letter of the word
@@ -37,7 +40,7 @@ public class Gallows extends Game{
 		}
 		lives = 5;
 		leftlet = word.length() - 1;
-		word= answers[room][5];
+		
 		
 	}
 
@@ -55,7 +58,7 @@ public class Gallows extends Game{
 		System.out.println("Έχετε περιθώριο 5 λαθών! Αν τα ξεπεράσετε τότε χάνετε ..."); // Να ρωτησουμε παιδια
 		System.out.println("Αν τα καταφέρετε τότε θα περάσετε στο 4ο και δυσκολότερο επίπεδο !!");
 		System.out.println("Η λέξη έχει τη μορφή ");
-		show(temp ,word);
+		show();
 		System.out.println("Η κρεμάλα ξεκινάει ! καλή τύχη !");
 
 		do{
@@ -71,15 +74,15 @@ public class Gallows extends Game{
 				a=input.next();
 			}
 			char gram=a.charAt(0);
-			y= search(gram,temp,letters,word);
+			y= search(gram);
 			
 			// It keeps his guesses in check and it updates the proper variables
 			if(y==true){
-				show(temp ,word);
-				leftlet = leftlet -1 ;
+				show();
+				system.out.println("Το γράμμα υπάρχει στη λέξη!");
 			} else {
 
-				lives = lives - 1;
+				lives -= 1;
 				System.out.println("Λάθος απάντηση ... Προσπθήστε ξανά !");
 			}
 
@@ -99,7 +102,7 @@ public class Gallows extends Game{
 	} 
         
 	// Method show : It prints the right guesses of the user and what is left to guess
-	public static void show(char[] temp, String word) {
+	public void show() {
 
 		for( int i = 0 ; i < word.length() ; i ++ ) {
 			System.out.print(temp[i]);
@@ -108,19 +111,16 @@ public class Gallows extends Game{
 	}
 
 	// Method search : It checks if the guess of the user is right and if it's so , it returns true
-	public static boolean search(char g,char[] temp,char[] letters,String word) {
+	public boolean search(char g) {
 
 		boolean t = false ;
 		for( int i =0 ; i < word.length() ; i++ ){
 			if (g == letters[i]){
-
-			temp[i] = g ;
-			t = true ;
-
+				temp[i] = g ;
+				t = true ;
 			}
 		}
 		return t ;
-
 	}
 
 
