@@ -59,7 +59,8 @@ public class Gallows extends Game{
 		System.out.println("Αν τα καταφέρετε τότε θα περάσετε στο 4ο και δυσκολότερο επίπεδο !!");
 		System.out.println("Η λέξη έχει τη μορφή ");
 		show();
-		System.out.println("Η κρεμάλα ξεκινάει ! καλή τύχη !");
+		System.out.println();
+		System.out.println(" Η κρεμάλα ξεκινάει ! καλή τύχη !");
 
 		do{
 			System.out.println("Μάντεψε ένα γράμμα !");
@@ -79,18 +80,22 @@ public class Gallows extends Game{
 			// It keeps his guesses in check and it updates the proper variables
 			if(y==true){
 				show();
-				system.out.println("Το γράμμα υπάρχει στη λέξη!");
+				System.out.println();
+				System.out.println("Το γράμμα υπάρχει στη λέξη!");
 			} else {
 
 				lives -= 1;
-				System.out.println("Λάθος απάντηση ... Προσπθήστε ξανά !");
+				System.out.print("Λάθος απάντηση ... ");
+				if(lives !=0){
+					System.out.println("Προσπθήστε ξανά !");
+				}
 			}
 
 		}while( lives != 0 && leftlet!=0 );
 		
                 // It prints the result of his effort
 		if(lives == 0){
-
+			System.out.println();
 			System.out.println("Δυστυχώς δεν τα καταφέρατε , η λέξη ήταν "+ word );
 
 		} else {
@@ -105,7 +110,7 @@ public class Gallows extends Game{
 	public void show() {
 
 		for( int i = 0 ; i < word.length() ; i ++ ) {
-			System.out.print(temp[i]);
+			System.out.print(temp[i]+" ");
 		}
 
 	}
@@ -118,6 +123,7 @@ public class Gallows extends Game{
 			if (g == letters[i]){
 				temp[i] = g ;
 				t = true ;
+				leftlet-=1;
 			}
 		}
 		return t ;
