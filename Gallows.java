@@ -45,7 +45,7 @@ public class Gallows extends Game{
 	}
 
 	// Method startGame: the main implementation of the Gallows game
-	public void startGame() {
+	public boolean startGame() {
 
 		Scanner input = new Scanner( System.in );
 		boolean y ;
@@ -97,11 +97,11 @@ public class Gallows extends Game{
 		if(lives == 0){
 			System.out.println();
 			System.out.println("Δυστυχώς δεν τα καταφέρατε , η λέξη ήταν "+ word );
-
+			return false;
 		} else {
 
 			System.out.println("Σωστή απάντηση! Περνάτε στο επόμενο επίπεδο");
-			
+			return true;
 		}
 
 	} 
