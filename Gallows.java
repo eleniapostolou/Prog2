@@ -21,25 +21,28 @@ public class Gallows extends Game{
 		 private String word ;
 		 private char [] letters;
 		 private char [] temp ;
-		 private int lives;
+		 private int lives,j;
 		 private int leftlet;
-
+		 private char [] unique ;
 	
 	// Constructor
 	public Gallows(int room) {
 		
 		word= answers[room][5];
 		letters= new char[ word.length()];
+		unique= new char[ word.length()];
 		temp = new char[ word.length()];
 		temp[0]=word.charAt(0);
 		for( int i = 1 ; i < word.length() ; i ++ ) {
 			temp[i] = '_' ; // it creates a table with only the first the letter of the word
+			unique[i]=	'\u0000';
 		}
 		for( int i=0 ; i < word.length() ; i ++) {
 			letters[i] =word.charAt(i);//it creates a char table wich contains the letters of the word
 		}
 		lives = 5;
 		leftlet = word.length() - 1;
+		j=0;
 		
 		
 	}
@@ -63,7 +66,8 @@ public class Gallows extends Game{
 		System.out.println(" Η κρεμάλα ξεκινάει ! καλή τύχη !");
 
 		do{
-			System.out.println("Μάντεψε ένα γράμμα !");
+			System.out.println("Μαντέψτε ένα γράμμα !");
+			System.out.println("Έχετε "+lives+"ζωές");
 		
 			String a ;
 			a=input.next();
@@ -100,7 +104,7 @@ public class Gallows extends Game{
 			return false;
 		} else {
 
-			System.out.println("Σωστή απάντηση! Περνάτε στο επόμενο επίπεδο");
+			System.out.println("Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
 			return true;
 		}
 
@@ -118,15 +122,28 @@ public class Gallows extends Game{
 	// Method search : It checks if the guess of the user is right and if it's so , it returns true
 	public boolean search(char g) {
 
-		boolean t = false ;
-		for( int i =0 ; i < word.length() ; i++ ){
-			if (g == letters[i]){
-				temp[i] = g ;
-				t = true ;
-				leftlet-=1;
-			}
+		boolean t1 = false ;
+		boolean t2 =false ; 
+
+		
+		for(int k =0 ; k<unique.length ; k++){
+			if(unique[k]==g){
+				t2=true;
+				System.out.println("Έχετε πει ξανά αυτό το γράμμα... Προσέχετε γιατί χάνετε ζωές");}
 		}
-		return t ;
+			if(t2==false || unique.length<1){
+				for( int i =1 ; i < word.length() ; i++ ){
+					if (g == letters[i]){
+						temp[i] = g ;
+						t1 = true ;
+						leftlet-=1;
+					}
+				}
+				unique[j]=g;
+				j++;
+			}
+	
+		return t1 ;
 	}
 
 
