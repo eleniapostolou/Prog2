@@ -1,20 +1,33 @@
+/*Crossword.java
+ *Copyright 2021 mysteryLab
+ */
+
+/**
+*The class QuessWho extends superclass Game (main class). The class implements the guessing a name game.
+*The Class displays 10 hints which help the player to find the secret person. The player has 3 tries to guess.
+*
+*
+*@version  _____
+*@author VASILIKI KARAMANOU , MARIOS LIAPIS 
+*/
 package mysteryLab;
 
 import javax.swing.JOptionPane;
 
 public class GuessWho extends Game {
+	
+    // class fields 	
     private String[] Questions;
     private String name;
     private String who;
     private int QuestionCount = 0;
     private int lives = 3;
-    //edo vazoume xrono logika kati prepei na ginei import tha to vroume
     private final int guessLimit = 10;
     private boolean outofGuesses = false;
     private String guess="null";
 
+    // Constructor
     public GuessWho(int room) {
-    //Αρχικοποιούμε την name με το όνομα του ατόμου που αποκρύπτεται και τον πίνακα με τα αντίστοιχα hints 
     	Questions = new String[10];
         for(int i =4; i<14 ; i++){
         	Questions[i-4] = questions[room][i];
@@ -30,13 +43,12 @@ public class GuessWho extends Game {
         System.out.println("Καλή Επιτυχία!");
     }
 
+    // Method startGuessing: the main implementation of the Guessing game	
     public void startGuessing() {
 	printInstructions();    
 	JOptionPane.showMessageDialog(null, Questions[QuestionCount]);
 	QuestionCount++;
-	//Όσο το όνομα που βρίσκει ο παίκτης διαφέρει από το ζητούμενο και έχει προσπαθήσει ήδη λιγότερες από τρεις φορές και ο χρόνος δεν έχει λήξει συνεχίζει να παίζει 
         while(!(guess.equals(name)) && !outofGuesses  ) {
-        //Του δίνουμε την επιλογή να πάρει extra hint ή να μαντέψει
             Object[] options = {"Extra Hint",
                     "Μάντεψε"};
             int n = JOptionPane.showOptionDialog(null,
@@ -47,7 +59,6 @@ public class GuessWho extends Game {
                     null,
                     options,
                     options[1]);
-	//Αν θέλει extra hint του εμφανίζουμε το αμέσως επόμενο που βρίσκεται στον πίνακα και αυξάνουμε τον μετρητή	
             if (n == JOptionPane.YES_OPTION) {
 	            if(QuestionCount < guessLimit) {
 	                     JOptionPane.showMessageDialog(null, Questions[QuestionCount]);
@@ -56,7 +67,7 @@ public class GuessWho extends Game {
 	                    outofGuesses = true;
 	                    String message = String.format("Δεν έχεις άλλα hints, μάντεψε ποιός είναι.");
 	                    JOptionPane.showMessageDialog(null, message); 
-	                    
+	                    // It prints the result of his effort
 	                    for(int i=lives ; i>=0 ;i--){
 	                    	if(i!=0){
 	                    		String who = JOptionPane.showInputDialog(null, "Γράψε ένα όνομα");
@@ -81,16 +92,16 @@ public class GuessWho extends Game {
 	                    }
 	            
 	            
-        //Αν θέλει να μαντέψει ελέγχουμε αν έχει λιγότερες απο τρεις ζωές και του ζητάμε να πληκτρολογήσει το όνομα		    
+           
             } else if (n == JOptionPane.NO_OPTION) {
                 if(lives>0) {
                     String who = JOptionPane.showInputDialog(null, "Γράψε ένα όνομα");
-	//Αν μάντεψε σωστά το όνομα, εμφανίζουμε αντίατοιχο μήνυμα και βγαίνει από την while 		
+	 
                     if(who.equals(name)) {
                         String message = String.format("Μπράβο σου κέρδισες!");
                         JOptionPane.showMessageDialog(null, message);
                         break;
-	//Αν μάντεψε λάθος όνομα, εμφανίζουμε αντίστοιχο μήνυμα και αυξάνουμε τις ζωές του		    
+	 	    
                     } else {
                         String message = String.format("Λάθος Απάντηση.");
                         JOptionPane.showMessageDialog(null, message);
@@ -100,7 +111,7 @@ public class GuessWho extends Game {
                         	String message1 = String.format("Ωχ.. έχασες! Δεν έχεις άλλες ζωές.");
                                 JOptionPane.showMessageDialog(null, message1);}
                     }
-	//Αν συμπλήρωσε 3 προσπάθειες λάθος του βγάζουμε μήνυμα ότι έχασε		
+	 	
 		} else {
                     String message = String.format("Ωχ.. έχασες! Δεν έχεις άλλες ζωές.");
                     JOptionPane.showMessageDialog(null, message);
