@@ -11,6 +11,7 @@ public class GuessWho extends Game {
     //edo vazoume xrono logika kati prepei na ginei import tha to vroume
     private final int guessLimit = 10;
     private boolean outofGuesses = false;
+    private String guess="null";
 
     public GuessWho(int room) {
     //Αρχικοποιούμε την name με το όνομα του ατόμου που αποκρύπτεται και τον πίνακα με τα αντίστοιχα hints 
@@ -30,7 +31,9 @@ public class GuessWho extends Game {
     }
 
     public void startGuessing() {
-        String guess="null";
+	printInstructions();    
+	JOptionPane.showMessageDialog(null, Questions[QuestionCount]);
+	QuestionCount++;
 	//Όσο το όνομα που βρίσκει ο παίκτης διαφέρει από το ζητούμενο και έχει προσπαθήσει ήδη λιγότερες από τρεις φορές και ο χρόνος δεν έχει λήξει συνεχίζει να παίζει 
         while(!(guess.equals(name)) && !outofGuesses  ) {
         //Του δίνουμε την επιλογή να πάρει extra hint ή να μαντέψει
@@ -70,8 +73,9 @@ public class GuessWho extends Game {
 	                    		
 	                    	}else {
 	                        	 String message1 = String.format("Ωχ.. έχασες! Δεν έχεις άλλες ζωές.");
-                        	 JOptionPane.showMessageDialog(null, message1);
-                        	 break;}	 
+                        	         JOptionPane.showMessageDialog(null, message1);
+                        	         break;
+				}	 
 	                    
 	                    	}
 	                    }
@@ -93,8 +97,8 @@ public class GuessWho extends Game {
                         lives--;
                         if(lives==0){
                         	outofGuesses = true;
-                        	  String message1 = String.format("Ωχ.. έχασες! Δεν έχεις άλλες ζωές.");
-                              JOptionPane.showMessageDialog(null, message1);}
+                        	String message1 = String.format("Ωχ.. έχασες! Δεν έχεις άλλες ζωές.");
+                                JOptionPane.showMessageDialog(null, message1);}
                     }
 	//Αν συμπλήρωσε 3 προσπάθειες λάθος του βγάζουμε μήνυμα ότι έχασε		
 		} else {
