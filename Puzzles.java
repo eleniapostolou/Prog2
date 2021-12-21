@@ -56,7 +56,7 @@ public class Puzzles extends Game {
 					counter = counter + 1;
 
 					if (counter < 3) {
-						SSystem.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
+						System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 					} else {
 						System.out.println(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
 					}
