@@ -3,7 +3,7 @@
  */
 
 /**
-*This class -Puzzles- extends the superclass Game. It implements the game puzzles, the final game to escape the room. 
+*This class -Puzzles- extends the superclass Game. It implements the game puzzles, the final game to escape the room.
 *The player needs to answer the three puzzles in his/her remaining time.
 *This class contains six methods.
 *
@@ -15,23 +15,26 @@
 
 package mysteryLab;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Puzzles extends Game {
-	
+
 	private int column = 15; //Refers to the position of the questions and answers at these tables.
 	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 
 	public void instructions() {
-		System.out.println("Ξ£Ο…Ξ³Ο‡Ξ±ΟΞ·Ο„Ξ®ΟΞΉΞ±! ΞΟ†Ο„Ξ±ΟƒΞµΟ‚ ΟƒΟ„ΞΏ Ο„ΞµΞ»ΞµΟ…Ο„Ξ±Ξ―ΞΏ ΞµΟ€Ξ―Ο€ΞµΞ΄ΞΏ!");
-		System.out.println("Ξ¤ΟΟΞ±, Ξ³ΞΉΞ± Ξ½Ξ± Ξ±Ο€ΞΏΞ΄ΟΞ¬ΟƒΞµΞΉΟ‚ ΞµΟ€ΞΉΟ„Ξ­Ξ»ΞΏΟ…Ο‚, Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ξ»ΟΟƒΞµΞΉΟ‚ Ξ±Ο…Ο„ΞΏΟΟ‚ Ο„ΞΏΟ…Ο‚ Ο„ΟΞµΞΉΟ‚ Ξ³ΟΞ―Ο†ΞΏΟ…Ο‚, Ο‡ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞΉΟΞ½Ο„Ξ±Ο‚ ΟΟƒΞ± Ξ­ΞΌΞ±ΞΈΞµΟ‚ ΟƒΟ„Ξ± Ο€ΟΞΏΞ·Ξ³ΞΏΟΞΌΞµΞ½Ξ± ΟƒΟ„Ξ¬Ξ΄ΞΉΞ±.");
-		System.out.println("Ξ§ΟΞ·ΟƒΞΉΞΌΞΏΟ€ΞΏΞ―Ξ·ΟƒΞµ Ο„ΞΏΞ½ Ο‡ΟΟΞ½ΞΏ Ο€ΞΏΟ… ΟƒΞΏΟ… Ξ±Ο€ΞΏΞΌΞ­Ξ½ΞµΞΉ Ξ­ΞΎΟ…Ο€Ξ½Ξ±! Ξ‘Ο‚ ΞΎΞµΞΊΞΉΞ½Ξ®ΟƒΞΏΟ…ΞΌΞµ ΞΊΞ±ΞΉ ΞΊΞ±Ξ»Ξ® ΞµΟ€ΞΉΟ„Ο…Ο‡Ξ―Ξ±! ");
+		System.out.println("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο!");
+		System.out.println("Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια.");
+		System.out.println("Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! ");
 	}
 
 	public void getPuzzle(int room) { //We get the puzzle for each room.
-		System.out.println(questions[room][getColumn()]); 
+		System.out.println(questions[room][getColumn()]);
 	}
 
-	public void getResult(int room) { //This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
+	public void getResult(int room) throws InputMismatchException {
+
+		//This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
 		//We use a boolean flag in order to stop the loop
 		//We use a counter in order to always keep track in which puzzle the player currently is.
 
@@ -40,23 +43,34 @@ public class Puzzles extends Game {
 		String answer;
 
 		while (flag == false) {
-			answer = in.nextLine();
-			String change = answer.toUpperCase();
 
-			if (change.equals(answers[room][getColumn() - 9])) {
-				
-				flag = true;
-				column = setColumn();
-				counter = counter + 1;
-				
-				if (counter < 3) {
-					System.out.println(" Ξ£Ο…Ξ³Ο‡Ξ±ΟΞ·Ο„Ξ®ΟΞΉΞ±! Ξ¤ΞΏ Ξ­Ξ»Ο…ΟƒΞµΟ‚ ΟƒΟ‰ΟƒΟ„Ξ±! Ξ ΟΞΏΟ‡Ο‰ΟΞ¬ΞΌΞµ ΟƒΟ„ΞΏΞ½ ΞµΟ€ΟΞΌΞµΞ½ΞΏ Ξ³ΟΞ―Ο†ΞΏ");
+			try {
+				answer = in.nextLine();
+				String change = answer.toUpperCase();
+
+
+				if (change.equals(answers[room][getColumn() - 9])) {
+
+					flag = true;
+					column = setColumn();
+					counter = counter + 1;
+
+					if (counter < 3) {
+						System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
+					} else {
+						System.out.println(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
+					}
+
 				} else {
-					System.out.println(" Ξ£Ο…Ξ³Ο‡Ξ±ΟΞΉΟ„Ξ®ΟΞΉΞ±! ΞΞ»Ο…ΟƒΞµΟ‚ ΞΊΞ±ΞΉ Ο„ΞΏΟ…Ο‚ Ο„ΟΞµΞΉΟ‚ Ξ³ΟΞ―Ο†ΞΏΟ…Ο‚! Ξ Ξ­ΟΞ±ΟƒΞµΟ‚ ΟΞ»ΞµΟ‚ Ο„ΞΉΟ‚ Ξ΄ΞΏΞΊΞΉΞΌΞ±ΟƒΞ―ΞµΟ‚ ΞΊΞ±ΞΉ Ξ±Ο€Ξ­Ξ΄ΟΞ±ΟƒΞµΟ‚ Ξ±Ο€Ο Ο„ΞΏ Ξ΄Ο‰ΞΌΞ¬Ο„ΞΉΞΏ!" );
+					System.out.println(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
 				}
-					
-			} else {
-				System.out.println(" ΞΟ…Ο€Ο‚... Ξ­ΞΊΞ±Ξ½ΞµΟ‚ Ξ»Ξ¬ΞΈΞΏΟ‚! Ξ ΟΞΏΟƒΟ€Ξ¬ΞΈΞ·ΟƒΞµ Ο€Ξ¬Ξ»ΞΉ!");
+			} catch (InputMismatchException inputMismatchException) { //In case the player inputs data in another language or special characters.
+
+				System.err.printf("%nException: %s%n", inputMismatchException);
+				in.nextLine(); //It erases the false input
+				System.out.println(" Παρακαλούμε εισάγεται την απάντησή σας αποκλειστικά με ελληνικούς χαρακτήρες.");
+				System.out.println(" Μην χρησιμοποιείται λατινικούς χαρακτήρες και άλλα σύμβολα.");
+				System.out.println(" Προσπαθήστε ξανά!");
 			}
 		}
 	}
@@ -75,19 +89,24 @@ public class Puzzles extends Game {
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		instructions();
-		
+
 
 		while (counter < 3) {
 
 			getPuzzle(room);
 			getResult(room);
 		}
-		
+
 	}
 
 
 
 
 }
+
+
+
+
+
 
 
