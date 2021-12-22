@@ -15,7 +15,6 @@
 
 package mysteryLab;
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 public class Puzzles extends Game {
 
@@ -32,7 +31,7 @@ public class Puzzles extends Game {
 		System.out.println(questions[room][getColumn()]);
 	}
 
-	public void getResult(int room) throws InputMismatchException {
+	public void getResult(int room) {
 
 		//This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
 		//We use a boolean flag in order to stop the loop
@@ -44,34 +43,26 @@ public class Puzzles extends Game {
 
 		while (flag == false) {
 
-			try {
-				answer = in.nextLine();
-				String change = answer.toUpperCase();
+			answer = in.nextLine();
+			String change = answer.toUpperCase();
 
+			if (change.equals(answers[room][getColumn() - 9])) {
 
-				if (change.equals(answers[room][getColumn() - 9])) {
+				flag = true;
+				column = setColumn();
+				counter = counter + 1;
 
-					flag = true;
-					column = setColumn();
-					counter = counter + 1;
-
-					if (counter < 3) {
-						System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
-					} else {
-						System.out.println(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
-					}
-
+				if (counter < 3) {
+					System.out.println(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				} else {
-					System.out.println(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
+					System.out.println(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
 				}
-			} catch (InputMismatchException inputMismatchException) { //In case the player inputs data in another language or special characters.
 
-				System.err.printf("%nException: %s%n", inputMismatchException);
-				in.nextLine(); //It erases the false input
-				System.out.println(" Παρακαλούμε εισάγεται την απάντησή σας αποκλειστικά με ελληνικούς χαρακτήρες.");
-				System.out.println(" Μην χρησιμοποιείται λατινικούς χαρακτήρες και άλλα σύμβολα.");
-				System.out.println(" Προσπαθήστε ξανά!");
+
+			} else {
+					System.out.println(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
 			}
+
 		}
 	}
 
@@ -85,9 +76,10 @@ public class Puzzles extends Game {
 		return column;
 	}
 
-	public void playPuzzle(int room) { //This is the method that we are going to call in main in order to play the game.
+	public boolean playPuzzle(int room) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
+		boolean result = false;
 		instructions();
 
 
@@ -95,7 +87,10 @@ public class Puzzles extends Game {
 
 			getPuzzle(room);
 			getResult(room);
+			result = true;
 		}
+
+		return result;
 
 	}
 
