@@ -13,8 +13,6 @@
 */
 package elenhs;
 
-import java.util.Scanner ;
-
 public class GallowsG extends Game{
 
                  // Class fields
@@ -54,7 +52,8 @@ public class GallowsG extends Game{
 		boolean y ;
 		
 		if (lives != 0 && leftlet!=0 ) {
-
+			
+			s =s.toUpperCase();
 			char gram = s.charAt(0);
 			ui.mainTextArea.setText(show()+"\n");
 			y= search( gram);
@@ -62,9 +61,9 @@ public class GallowsG extends Game{
 			// It keeps his guesses in check and it updates the proper variables
 			if(y==true){
 				
-				//ui.mainTextArea.setText(show()+"\n");
+				
 				ui.mainTextArea.append("Το γράμμα υπάρχει στη λέξη!");
-				//ui.mainTextArea.append("Μαντέψτε ξανά !");
+				ui.mainTextArea.append("Έχετε "+lives+" ζωές \n");
 			} else {
 
 				lives -= 1;
@@ -86,9 +85,9 @@ public class GallowsG extends Game{
 		
 		} else if (leftlet == 0){
 
-			
 			ui.mainTextArea.append("Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
-			
+			EscapeRoom2.miniGame = 3; 
+			ui.cb.setVisible(true);
 		}
 
 	} 
@@ -112,7 +111,7 @@ public class GallowsG extends Game{
 		for(int k =0 ; k<unique.length ; k++){
 			if(unique[k]==g){
 				t2=true;
-				ui.mainTextArea.append("Έχετε πει ξανά αυτό το γράμμα... Προσέχετε γιατί χάνετε ζωές");
+				//ui.mainTextArea.append("Έχετε πει ξανά αυτό το γράμμα... Προσέχετε γιατί χάνετε ζωές");
 			}
 		}
 		if(t2==false || unique.length<1){
