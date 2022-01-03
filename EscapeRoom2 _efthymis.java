@@ -11,7 +11,8 @@ public class EscapeRoom2 {
 	ChoiceHandler cHandler = new ChoiceHandler();
 	UI ui = new UI();
 	TransitionManager tm = new TransitionManager(ui);
-	int position;
+	int theme;
+	public static int miniGame;
 	GallowsG g;
 	public static void main(String[] args) {
 	 
@@ -36,29 +37,59 @@ public class EscapeRoom2 {
 			
 			switch(yourCh){
 			case "start": tm.showRoomChoices(); break;
-			case "c1": tm.welcomePlayer(); break;
+			case "c1":
+				theme = 0;
+				miniGame = 1;
+				tm.welcomePlayer(); 	
+				break;
 			case "c2":
-				position = 2; //γιατι παιζεισ το δευτερο παιχνδι
+				theme = 1; 
+				miniGame = 3;
+				tm.welcomePlayer();
+				break;
+			case "c3":
+				theme = 2;
+				miniGame = 1;
+				tm.welcomePlayer();
+				break;
+			case "c4": 
+				theme = 3;
+				miniGame = 1;
+				tm.welcomePlayer();
+				break;
+				
+			case "wb" :
 				tm.roomPrep();
-				g = new GallowsG(1,ui);
-				g.instructions();
+				switch(miniGame) {
+				case 1: 
+					//cr = new CrossRoad();
+					//cr.instructions();
+					break;
+				case 2:
+					
+					break;
+				case 3: 
+					g = new GallowsG(theme,ui);
+					g.instructions();
+					break;
+				case 4: break;
+				}
 				
 				break;
-			case "c3": break;
-			case "c4": break;
-			case "in": 
-				tm.roomPrep();
-				switch(position) {
-				case 1 : break;
-				case 2 : 
+			}
+			
+			if (yourCh == "in") {
+				switch (miniGame) {
+				case 1: break;
+				case 2: 
+					
+					break;
+				case 3: 
 					input = ui.jtf.getText();
 					g.startGame(input);
-					//ui.mainTextArea.setText("phre input  "+input);
 					break;
-				case 3 : break;
-				case 4 : break;
+				case 4: break;
 				}
-				break;
 			}
 			
 		}
