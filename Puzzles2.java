@@ -26,14 +26,15 @@ public class Puzzles extends Game {
 		this.ui = ui;
 	}
 
-	public void instructions() {
+	public void instructions(int room) {
 		ui.mainTextArea.setText("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο! \n"+
 		"Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια. \n"+
-		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! " + getPuzzle(room));
+		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία!\n " + 
+		getPuzzle(room));
 	}
 
-	public void getPuzzle(int room) { //We get the puzzle for each room.
-		System.out.println(questions[room][getColumn()]);
+	public String getPuzzle(int room) { //We get the puzzle for each room.
+		return(questions[room][getColumn()]);
 	}
 
 	public void getResult(int room, String answer) {
@@ -79,7 +80,7 @@ public class Puzzles extends Game {
 		return column;
 	}
 
-	public boolean playPuzzle(int room) { //This is the method that we are going to call in main in order to play the game.
+	public boolean playPuzzle(int room, String answer) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		boolean result = false;
@@ -88,7 +89,7 @@ public class Puzzles extends Game {
 		while (counter < 3) {
 
 			getPuzzle(room);
-			getResult(room);
+			getResult(room, answer);
 			result = true;
 		}
 
@@ -101,6 +102,9 @@ public class Puzzles extends Game {
 
 
 }
+
+
+
 
 
 
