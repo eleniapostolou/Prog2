@@ -1,3 +1,5 @@
+package elenhs;
+
 /*Puzzles.java
  *Copyright 2021 mysteryLab
  */
@@ -13,28 +15,25 @@
 */
 
 
-package mysteryLab;
-import java.util.Scanner;
-
-public class Puzzles extends Game {
+public class PuzzlesG extends Game {
 
 	private int column = 15; //Refers to the position of the questions and answers at these tables.
 	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 	UI ui;
 
-	public Puzzles(UI ui) {
+	public PuzzlesG(UI ui) {
 		this.ui = ui;
 	}
 
 	public void instructions(int room) {
 		ui.mainTextArea.setText("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο! \n"+
 		"Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια. \n"+
-		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία!\n " + 
-		getPuzzle(room));
+		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! \n" + getPuzzle(room));
+		counter += 1;
 	}
 
 	public String getPuzzle(int room) { //We get the puzzle for each room.
-		return(questions[room][getColumn()]);
+		 return questions[room][getColumn()];
 	}
 
 	public void getResult(int room, String answer) {
@@ -50,21 +49,22 @@ public class Puzzles extends Game {
 			String change = answer.toUpperCase();
 
 			if (change.equals(answers[room][getColumn() - 9])) {
-
-
+				
+				System.out.println("doo");
 				column = setColumn();
-				counter = counter + 1;
+				counter += 1;
 
 				if (counter < 3) {
 					ui.mainTextArea.append(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 				} else {
-					ui.mainTextArea.append(" Συγχαριτήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
-					EscapeRoom2.miniGame = 5;
+					ui.mainTextArea.append(" Συγχαρητήρια! Έλυσες και τους τρεις γρίφους! Πέρασες όλες τις δοκιμασίες και απέδρασες από το δωμάτιο!" );
+					EscapeRoom2.miniGame = 3;
+					ui.cb.setVisible(true);
 				}
 
 
 			} else {
-					ui.mainTextArea.append(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
+				ui.mainTextArea.append(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
 			}
 
 
@@ -80,21 +80,22 @@ public class Puzzles extends Game {
 		return column;
 	}
 
-	public boolean playPuzzle(int room, String answer) { //This is the method that we are going to call in main in order to play the game.
+	public boolean playPuzzle(int room ,String answer) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		boolean result = false;
 
 
-		while (counter < 3) {
-
-			getPuzzle(room);
-			getResult(room, answer);
+		if (counter < 3) {
+			
+			getResult(room,answer);
+			ui.mainTextArea.setText(getPuzzle(room));
 			result = true;
+			System.out.println("poo");
 		}
 
 		return result;
-		ui.cb.setVisible(true)
+		
 
 	}
 
@@ -102,9 +103,5 @@ public class Puzzles extends Game {
 
 
 }
-
-
-
-
 
 
