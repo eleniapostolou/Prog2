@@ -9,6 +9,8 @@ import java.awt.GridLayout;
 
 
 
+
+import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,6 +34,8 @@ public class UI {
 	Gallows g;
 	Font titleFont = new Font("Times New Roman", Font.PLAIN, 80);
 	Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+	private JButton wb;
+	AbstractButton cb;
 	
 	public void createUI(ChoiceHandler cHandler) {
 		
@@ -105,7 +109,7 @@ public class UI {
 		b4.setFont(normalFont);
 		b4.setFocusPainted(false);
 		b4.addActionListener(cHandler);
-		b4.setActionCommand("c4");
+		b4.setActionCommand("");
 		choiceButtonPanel.add(b4);
 		
 		welcomePanel = new JPanel();
@@ -125,6 +129,16 @@ public class UI {
 		window.add(welcomePanel);
 		con.add(welcomePanel);
 		
+		wb = new JButton("CONTINUE");
+		wb.setBackground(Color.black);
+		wb.setForeground(Color.white);
+		wb.setFont(normalFont);
+		wb.setFocusPainted(false);
+		wb.addActionListener(cHandler);
+		wb.setActionCommand("wb");
+		welcomePanel.add(wb);
+
+		
 		inputPanel = new JPanel();
 		inputPanel.setBounds(250,650,500,50);
 		inputPanel.setBackground(Color.black);
@@ -143,7 +157,7 @@ public class UI {
 		MtPanel = new JPanel();
 		MtPanel.setBounds(90, 50, 800, 650);
 		MtPanel.setBackground(Color.black);
-		mainTextArea = new JTextArea("gamiesai");
+		mainTextArea = new JTextArea();
 		mainTextArea.setBounds(120, 120, 750, 450);
 		mainTextArea.setBackground(Color.black);
 		mainTextArea.setForeground(Color.white);
@@ -152,6 +166,18 @@ public class UI {
 		mainTextArea.setWrapStyleWord(true);
 		mainTextArea.setEditable(false);
 		MtPanel.add(mainTextArea);
+		
+		cb = new JButton("CONTINUE");
+		cb.setBackground(Color.black);
+		cb.setForeground(Color.white);
+		cb.setFont(normalFont);
+		cb.setFocusPainted(false);
+		cb.addActionListener(cHandler);
+		cb.setActionCommand("wb");
+		MtPanel.add(cb);
+		cb.setVisible(false);
+		
+		
 		window.add(MtPanel);
 		con.add(MtPanel);
 		
