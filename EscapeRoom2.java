@@ -13,6 +13,7 @@ public class EscapeRoom2 {
 	int room;
 	public static int miniGame;
 	private String roomName;
+	Countdown timer;
 	Crossword2 cr;
 	GallowsG g;
 	public static void main(String[] args) {
@@ -64,6 +65,8 @@ public class EscapeRoom2 {
 				break;
 				
 			case "wb" :
+				timer = new Countdown(ui);
+				timer.startCountdown();
 				tm.roomPrep();
 				switch(miniGame) {
 				case 1: 
