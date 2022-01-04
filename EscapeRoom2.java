@@ -88,6 +88,7 @@ public class EscapeRoom2 {
 				case 1:
 					input = ui.jtf.getText();
 					cr.playGame(input);
+					ui.jtf.setText("");
 					break;
 				case 2: 
 					
@@ -95,6 +96,7 @@ public class EscapeRoom2 {
 				case 3: 
 					input = ui.jtf.getText();
 					g.startGame(input);
+					ui.jtf.setText("");
 					break;
 				case 4: break;
 				}
