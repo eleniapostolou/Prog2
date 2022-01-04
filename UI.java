@@ -146,6 +146,7 @@ public class UI {
 		inputPanel.setLayout(new GridLayout(1,2));
 		
 		jtf = new JTextField();
+		jtf.setFont(miniGameFont);
 		inputPanel.add(jtf);
 		
 		enterB = new JButton ("ENTER");
