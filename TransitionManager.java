@@ -9,14 +9,14 @@ public class TransitionManager {
 	}
 	
 	public void showMainScreen() {
-		
-		ui.titleNamePanel.setVisible(true);
-		ui.startButtonPanel.setVisible(true);
-		
 		ui.choiceButtonPanel.setVisible(false);
 		ui.welcomePanel.setVisible(false);
 		ui.inputPanel.setVisible(false);
 		ui.MtPanel.setVisible(false);
+		ui.timePanel.setVisible(false);
+		
+		ui.titleNamePanel.setVisible(true);
+		ui.startButtonPanel.setVisible(true);
 		
 	}
 	
@@ -24,20 +24,22 @@ public class TransitionManager {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
 		ui.welcomePanel.setVisible(false);
-		
-		ui.choiceButtonPanel.setVisible(true);
+		ui.timePanel.setVisible(false);
 		ui.inputPanel.setVisible(false);
 		ui.MtPanel.setVisible(false);
+		
+		ui.choiceButtonPanel.setVisible(true);
 	}
 	
 	public void welcomePlayer() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
 		ui.choiceButtonPanel.setVisible(false);
-		
-		ui.welcomePanel.setVisible(true);
+		ui.timePanel.setVisible(false);
 		ui.inputPanel.setVisible(false);
 		ui.MtPanel.setVisible(false);
+		
+		ui.welcomePanel.setVisible(true);
 	}
 	
 	public void inputP() {
@@ -48,6 +50,7 @@ public class TransitionManager {
 		
 		ui.inputPanel.setVisible(true);
 		ui.welcomePanel.setVisible(true);
+		ui.timePanel.setVisible(true);
 		
 	}
 	
@@ -60,6 +63,7 @@ public class TransitionManager {
 		
 		ui.inputPanel.setVisible(true);
 		ui.MtPanel.setVisible(true);
+		ui.timePanel.setVisible(true);
 		
 	}
 }
