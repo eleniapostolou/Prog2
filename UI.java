@@ -25,8 +25,8 @@ import mysteryLab.EscapeRoom2.ChoiceHandler;
 public class UI {
 	
 	JFrame window;
-	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel,inputPanel,MtPanel;
-	JLabel titleNameLabel;
+	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel;
+	JLabel titleNameLabel, timeLabel;
 	JButton startButton, b1, b2, b3, b4,enterB;
 	JTextArea welcomeText, mainTextArea;
 	JTextField jtf ;
@@ -181,9 +181,18 @@ public class UI {
 		MtPanel.add(cb);
 		cb.setVisible(false);
 		
-		
 		window.add(MtPanel);
 		con.add(MtPanel);
+		
+		timePanel = new JPanel();
+		timePanel.setBounds(330, 5, 300, 40);
+		timePanel.setBackground(Color.black);
+		timeLabel = new JLabel();
+		timeLabel.setForeground(Color.white);
+		timeLabel.setFont(miniGameFont);
+		timePanel.add(timeLabel);
+		window.add(timePanel);
+		con.add(timePanel);
 		
 		
 	
