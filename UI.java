@@ -27,7 +27,7 @@ public class UI {
 	JFrame window;
 	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel;
 	JLabel titleNameLabel, timeLabel;
-	JButton startButton, b1, b2, b3, b4,enterB;
+	JButton startButton, b1, b2, b3, b4,enterB,gob;
 	JTextArea welcomeText, mainTextArea;
 	JTextField jtf ;
 	Container con ;
@@ -193,6 +193,15 @@ public class UI {
 		timePanel.add(timeLabel);
 		window.add(timePanel);
 		con.add(timePanel);
+		
+		gob = new JButton("PLAY AGAIN");
+		gob.setBackground(Color.black);
+		gob.setForeground(Color.white);
+		gob.setFont(normalFont);
+		gob.setFocusPainted(false);
+		gob.addActionListener(cHandler);
+		gob.setActionCommand("start");
+		MtPanel.add(gob);
 		
 		
 	
