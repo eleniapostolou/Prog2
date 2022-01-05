@@ -11,9 +11,8 @@
 *@version  _____
 *@author EFTHYMIOS KONTOES , KOSTANTINOS SPATHAS 
 */
+package mysteryLab;
 
-package mysteryLab ;
-import java.util.Scanner ;
 
 public class Gallows extends Game{
 
@@ -24,13 +23,16 @@ public class Gallows extends Game{
 		 private int lives,j;
 		 private int leftlet;
 		 private char [] unique ;
+		 UI ui; 
+		 TransitionManager tm;
+		 Countdown cd;
 	
 	// Constructor
-	public Gallows(int room) {
+	public Gallows(int room, UI ui, TransitionManager tm,Countdown cd) {
 		
 		word= answers[room][5];
 		letters= new char[ word.length()];
-		unique= new char[ word.length()];
+		unique= new char[ 24];
 		temp = new char[ word.length()];
 		temp[0]=word.charAt(0);
 		for( int i = 1 ; i < word.length() ; i ++ ) {
@@ -38,85 +40,75 @@ public class Gallows extends Game{
 			unique[i]=	'\u0000';
 		}
 		for( int i=0 ; i < word.length() ; i ++) {
-			letters[i] =word.charAt(i);//it creates a char table wich contains the letters of the word
+			letters[i] =word.charAt(i);//it creates a char table which contains the letters of the word
 		}
 		lives = 5;
 		leftlet = word.length() - 1;
 		j=0;
-		
+		this.ui =ui;
+		this.tm = tm;
+		this.cd = cd;
 		
 	}
 
 	// Method startGame: the main implementation of the Gallows game
-	public boolean startGame() {
+	public void startGame(String s) {
 
-		Scanner input = new Scanner( System.in );
 		boolean y ;
-		System.out.println("Συγχαρητήρια! βρίσκεστε στο 3ο επίπεδο! ");
-		System.out.println("Είστε ένα επίπεδο πριν τη τελευταία δοκιμασία αυτού του δωματίου...");
-		System.out.println("Ο γρίφος που καλείστε να λύσετε τώρα είναι μια κρεμάλα !");
-		System.out.println("Το παιχνίδι παίζεται ως εξής");
-		System.out.println("Υπάρχει μια κρυμμένη λέξη που καλείστε να βρείτε ...");
-		System.out.println("Σας δίνεται το πρώτο γράμμα της λέξης και πρέπει να μαντέψετε ποια άλλα γράμματα υπάρχουν μέσα σε αυτή !");
-		System.out.println("Έχετε περιθώριο 5 λαθών! Αν τα ξεπεράσετε τότε χάνετε ..."); // Να ρωτησουμε παιδια
-		System.out.println("Αν τα καταφέρετε τότε θα περάσετε στο 4ο και δυσκολότερο επίπεδο !!");
-		System.out.println("Η λέξη έχει τη μορφή ");
-		show();
-		System.out.println();
-		System.out.println(" Η κρεμάλα ξεκινάει ! καλή τύχη !");
-
-		do{
-			System.out.println("Μαντέψτε ένα γράμμα !");
-			System.out.println("Έχετε "+lives+"ζωές");
 		
-			String a ;
-			a=input.next();
-			a=a.toUpperCase();
-			// data validation check
-			while(a.length() !=1) { 
-
-				System.out.println("Μη έγκυρη προσπάθεια ! Προσπαθήστε χρησιμοποιώντας μόνο ένα γράμμα");
-				a=input.next();
-			}
-			char gram=a.charAt(0);
-			y= search(gram);
+		if (lives != 0 && leftlet!=0 ) {
 			
+			s =s.toUpperCase();
+			char gram = s.charAt(0);
+			ui.mainTextArea.setText(show()+"\n");
+			y= search( gram);
+			ui.mainTextArea.setText(show()+"\n");
 			// It keeps his guesses in check and it updates the proper variables
-			if(y==true){
-				show();
-				System.out.println();
-				System.out.println("Το γράμμα υπάρχει στη λέξη!");
+			if(y){
+				
+				if (leftlet != 0) {
+				ui.mainTextArea.append("Το γράμμα υπάρχει στη λέξη!");
+				ui.mainTextArea.append("Έχετε "+lives+" ζωές \n");
+				}
+				
 			} else {
 
 				lives -= 1;
-				System.out.print("Λάθος απάντηση ... ");
+				ui.mainTextArea.append("Λάθος απάντηση ... \n");
 				if(lives !=0){
-					System.out.println("Προσπθήστε ξανά !");
+					
+					ui.mainTextArea.append("Προσπαθήστε ξανά ! ");
+					ui.mainTextArea.append("Έχετε "+lives+" ζωές \n");
 				}
 			}
 
-		}while( lives != 0 && leftlet!=0 );
+		}
 		
                 // It prints the result of his effort
 		if(lives == 0){
-			System.out.println();
-			System.out.println("Δυστυχώς δεν τα καταφέρατε , η λέξη ήταν "+ word );
-			return false;
-		} else {
+			
+			ui.timePanel.setVisible(false);
+			tm.resultPanel(); 
+			ui.mainTextArea.setText("\n     GAME OVER \n\n");
+			cd.timer.cancel();
+		
+		
+		} else if (leftlet == 0){
 
-			System.out.println("Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
-			return true;
+			ui.mainTextArea.append(" \n Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
+			EscapeRoom2.miniGame = 4; 
+			ui.cb.setVisible(true);
 		}
 
 	} 
         
 	// Method show : It prints the right guesses of the user and what is left to guess
-	public void show() {
-
+	public String show() {
+		String s = "";
 		for( int i = 0 ; i < word.length() ; i ++ ) {
-			System.out.print(temp[i]+" ");
+			s +=temp[i]+" ";
 		}
-
+		return s;
 	}
 
 	// Method search : It checks if the guess of the user is right and if it's so , it returns true
@@ -129,22 +121,36 @@ public class Gallows extends Game{
 		for(int k =0 ; k<unique.length ; k++){
 			if(unique[k]==g){
 				t2=true;
-				System.out.println("Έχετε πει ξανά αυτό το γράμμα... Προσέχετε γιατί χάνετε ζωές");}
-		}
-			if(t2==false || unique.length<1){
-				for( int i =1 ; i < word.length() ; i++ ){
-					if (g == letters[i]){
-						temp[i] = g ;
-						t1 = true ;
-						leftlet-=1;
-					}
-				}
-				unique[j]=g;
-				j++;
 			}
+		}
+		if(t2==false || unique.length<1){
+			for( int i =1 ; i < word.length() ; i++ ){
+				if (g == letters[i]){
+					temp[i] = g ;
+					t1 = true ;
+					leftlet-=1;
+				}
+			}
+			unique[j]=g;
+			j++;
+		}
 	
 		return t1 ;
 	}
 
+	public void instructions() {
+		
+		ui.mainTextArea.setText("Συγχαρητήρια! βρίσκεστε στο 3ο επίπεδο! \n"+
+		"Είστε ένα επίπεδο πριν τη τελευταία δοκιμασία αυτού του δωματίου...\n"+
+		"Ο γρίφος που καλείστε να λύσετε τώρα είναι μια κρεμάλα !\n"+
+		"Το παιχνίδι παίζεται ως εξής \n"+
+		"Υπάρχει μια κρυμμένη λέξη που καλείστε να βρείτε ...\n"+
+		"Σας δίνεται το πρώτο γράμμα της λέξης και πρέπει να μαντέψετε ποια άλλα γράμματα υπάρχουν μέσα σε αυτή !\n"+
+		"Έχετε περιθώριο 5 λαθών! Αν τα ξεπεράσετε τότε χάνετε ...\n"+
+		"Αν τα καταφέρετε τότε θα περάσετε στο 4ο και δυσκολότερο επίπεδο !!\n"+
+		"Η κρεμάλα ξεκινάει ! καλή τύχη !\n"+
+		"Η λέξη έχει τη μορφή \n"+show());
+	}
 
 }
+
