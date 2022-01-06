@@ -34,7 +34,7 @@ public class Countdown {
 		
 	}
 	
-	//Method geti(): Returns the value of i (the remaining time in seconds)
+	//Method geti(): Returns the value of variable i (the remaining time in seconds)
 	public int geti() {
 		
 		return i;
