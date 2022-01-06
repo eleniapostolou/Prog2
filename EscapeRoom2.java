@@ -43,7 +43,9 @@ public class EscapeRoom2 {
 			String input = "null";
 			
 			switch(yourCh){
-			case "start": tm.showRoomChoices(); break;
+			case "start": 
+				tm.showRoomChoices();
+				break;
 			case "c1":
 				room = 0;
 				roomName = "Κίρκη";
