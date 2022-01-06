@@ -92,7 +92,6 @@ public class Puzzles extends Game {
 			if (counter < 3) {
 			ui.mainTextArea.append("\n\n"+getPuzzle(room));
 			}
-			System.out.println("poo");
 		}
 		
 
