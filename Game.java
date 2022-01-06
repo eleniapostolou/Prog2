@@ -1,5 +1,5 @@
 package mysteryLab;
-
+/*Data tables for the Escape Room*/
 abstract public class Game {
 	
 	protected String[][] questions = new String[4][18];
