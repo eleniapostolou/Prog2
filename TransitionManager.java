@@ -68,11 +68,12 @@ public class TransitionManager {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
 		ui.choiceButtonPanel.setVisible(false);
-		
+		ui.timePanel.setVisible(false);
 		ui.inputPanel.setVisible(false);
 		ui.welcomePanel.setVisible(false);
-		ui.MtPanel.setVisible(true);
 		ui.cb.setVisible(false);
+		
+		ui.MtPanel.setVisible(true);
 		ui.gob.setVisible(true);
 		ui.mainTextArea.setFont(ui.titleFont);
 	}
