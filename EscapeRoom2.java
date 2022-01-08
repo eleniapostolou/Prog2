@@ -3,6 +3,9 @@ package mysteryLab;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import mysteryLab.Gallows;
+import mysteryLab.TransitionManager;
+import mysteryLab.UI;
 
 
 public class EscapeRoom2 {
@@ -14,21 +17,21 @@ public class EscapeRoom2 {
 	public static int miniGame;
 	private String roomName;
 	Countdown timer;
-	Crossword2 cr;
-	GallowsG g;
+	Crossword cr;
+	Gallows g;
+	Puzzles p;
+	GuessWho gw;
 	public static void main(String[] args) {
 	 
 		new EscapeRoom2();
 	}
 	
-	public EscapeRoom2() {	
+	public EscapeRoom2()  {	
 		ui.createUI(cHandler);
 		tm.showMainScreen();
 	}
 		
 		
-	
-	
 	public class ChoiceHandler implements ActionListener {
 	
 		@Override
@@ -65,25 +68,34 @@ public class EscapeRoom2 {
 				break;
 				
 			case "wb" :
-				timer = new Countdown(ui);
-				timer.startCountdown();
 				tm.roomPrep();
 				switch(miniGame) {
 				case 1: 
-					cr = new Crossword2(room,roomName,ui);
+					ui.timePanel.setVisible(true);
+					timer = new Countdown(ui,tm);
+					timer.startCountdown();
+					cr = new Crossword(room,roomName,ui);
 					cr.printInstructions();
 					break;
 				case 2:
-					
+					gw = new GuessWho(room,ui,tm,timer);
+					gw.printInstructions(room);
+					ui.gwB.setVisible(true);
 					break;
 				case 3: 
-					g = new GallowsG(room,ui);
+					g = new Gallows(room,ui,tm,timer);
 					g.instructions();
 					break;
-				case 4: break;
+				case 4: 
+					p = new Puzzles(ui,tm,timer);
+					p.instructions(room);
+					
+					break;
 				}
-				
 				break;
+			case "gwB" :
+				gw.showHint(room);
+			
 			}
 			
 			if (yourCh == "in") {
@@ -94,14 +106,20 @@ public class EscapeRoom2 {
 					ui.jtf.setText("");
 					break;
 				case 2: 
-					
+					input = ui.jtf.getText();
+					gw.playGuessWho(room, input);
+					ui.jtf.setText("");
 					break;
 				case 3: 
 					input = ui.jtf.getText();
 					g.startGame(input);
 					ui.jtf.setText("");
 					break;
-				case 4: break;
+				case 4: 
+					input = ui.jtf.getText();
+					p.playPuzzle(room,input);
+					ui.jtf.setText("");
+					break;
 				}
 			}
 			
