@@ -51,7 +51,7 @@ public class EscapeRoom2 {
 			case "c2":
 				room = 1; 
 				roomName = "Θησέας";
-				miniGame = 1;
+				miniGame = 2;
 				tm.welcomePlayer();
 				break;
 			case "c3":
@@ -89,13 +89,11 @@ public class EscapeRoom2 {
 				case 4: 
 					p = new Puzzles(ui,tm,timer);
 					p.instructions(room);
-					
 					break;
 				}
 				break;
 			case "gwB" :
-				gw.showHint(room);
-			
+				gw.showHint(room);	
 			}
 			
 			if (yourCh == "in") {
