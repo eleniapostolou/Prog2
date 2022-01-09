@@ -3,7 +3,6 @@ package mysteryLab;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import mysteryLab.Gallows;
 import mysteryLab.TransitionManager;
 import mysteryLab.UI;
@@ -21,19 +20,18 @@ public class EscapeRoom2 {
 	Crossword cr;
 	Gallows g;
 	Puzzles p;
+	GuessWho gw;
 	public static void main(String[] args) {
 	 
 		new EscapeRoom2();
 	}
 	
-	public EscapeRoom2() {	
+	public EscapeRoom2()  {	
 		ui.createUI(cHandler);
 		tm.showMainScreen();
 	}
 		
 		
-	
-	
 	public class ChoiceHandler implements ActionListener {
 	
 		@Override
@@ -43,9 +41,7 @@ public class EscapeRoom2 {
 			String input = "null";
 			
 			switch(yourCh){
-			case "start": 
-				tm.showRoomChoices();
-				break;
+			case "start": tm.showRoomChoices(); break;
 			case "c1":
 				room = 0;
 				roomName = "Κίρκη";
@@ -82,7 +78,9 @@ public class EscapeRoom2 {
 					cr.printInstructions();
 					break;
 				case 2:
-					
+					gw = new GuessWho(room,ui,tm,timer);
+					gw.printInstructions(room);
+					ui.gwB.setVisible(true);
 					break;
 				case 3: 
 					g = new Gallows(room,ui,tm,timer);
@@ -95,7 +93,8 @@ public class EscapeRoom2 {
 					break;
 				}
 				break;
-				
+			case "gwB" :
+				gw.showHint(room);
 			
 			}
 			
@@ -107,7 +106,9 @@ public class EscapeRoom2 {
 					ui.jtf.setText("");
 					break;
 				case 2: 
-					
+					input = ui.jtf.getText();
+					gw.playGuessWho(room, input);
+					ui.jtf.setText("");
 					break;
 				case 3: 
 					input = ui.jtf.getText();
