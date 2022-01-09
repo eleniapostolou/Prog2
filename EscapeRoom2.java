@@ -51,7 +51,7 @@ public class EscapeRoom2 {
 			case "c2":
 				room = 1; 
 				roomName = "Θησέας";
-				miniGame = 2;
+				miniGame = 1;
 				tm.welcomePlayer();
 				break;
 			case "c3":
