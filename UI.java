@@ -31,6 +31,7 @@ public class UI {
 	Font titleFont = new Font("Century Gothic", Font.PLAIN, 80);
 	Font normalFont = new Font("Century Gothic", Font.PLAIN, 30);
 	Font miniGameFont = new Font("Century Gothic", Font.PLAIN, 22);
+	Font biggerFont = new Font("Century Gothic", Font.PLAIN, 40);
 	private JButton wb;
 	AbstractButton cb;
 	JButton gwB;
@@ -215,7 +216,6 @@ public class UI {
 		MtPanel.add(gwB);
 		gwB.setVisible(false);
 		
-		//should always be in the bottom
 		picturePanel = new JPanel();
 		picturePanel.setBounds(0,0,1000,800);
 		picturePanel.setBackground(Color.black);
