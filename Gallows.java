@@ -16,7 +16,7 @@ package mysteryLab;
 
 public class Gallows extends Game{
 
-                 // Class fields
+         // Class fields
 		 private String word ;
 		 private char [] letters;
 		 private char [] temp ;
@@ -26,7 +26,7 @@ public class Gallows extends Game{
 		 UI ui; 
 		 TransitionManager tm;
 		 Countdown cd;
-	
+	 
 	// Constructor
 	public Gallows(int room, UI ui, TransitionManager tm,Countdown cd) {
 		
@@ -55,7 +55,7 @@ public class Gallows extends Game{
 	public void startGame(String s) {
 
 		boolean y ;
-		
+		ui.mainTextArea.setFont(ui.biggerFont);
 		if (lives != 0 && leftlet!=0 ) {
 			
 			s =s.toUpperCase();
@@ -84,7 +84,7 @@ public class Gallows extends Game{
 
 		}
 		
-                // It prints the result of his effort
+        // It prints the result of his effort
 		if(lives == 0){
 			
 			ui.timePanel.setVisible(false);
@@ -93,7 +93,7 @@ public class Gallows extends Game{
 			cd.timer.cancel();
 		
 		
-		} else if (leftlet == 0){
+		} else if (leftlet == 0){ 
 
 			ui.mainTextArea.append(" \n Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
 			EscapeRoom2.miniGame = 4; 
@@ -137,7 +137,7 @@ public class Gallows extends Game{
 	
 		return t1 ;
 	}
-
+	
 	public void instructions() {
 		
 		ui.mainTextArea.setText("Συγχαρητήρια! βρίσκεστε στο 3ο επίπεδο! \n"+
