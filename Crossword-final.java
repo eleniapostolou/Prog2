@@ -67,7 +67,7 @@ public class Crossword extends Game{
 		if (!continueGame) {
 			ui.mainTextArea.append("ΜΠΡΑΒΟ! Αποδράσατε από το πρώτο στάδιο του δωματίου! "
 									+ "Είστε έτοιμοι να προχωρήσετε!");
-			EscapeRoom2.miniGame = 3; 
+			EscapeRoom2.miniGame = 2; 
 			ui.cb.setVisible(true);
 		}
 		
