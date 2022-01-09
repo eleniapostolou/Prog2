@@ -6,12 +6,8 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-
-
-
-
-
 import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,21 +33,28 @@ public class UI {
 	Font miniGameFont = new Font("Century Gothic", Font.PLAIN, 22);
 	private JButton wb;
 	AbstractButton cb;
+	JButton gwB;
+	private JPanel picturePanel;
+	private JLabel pictureLabel;
+	private ImageIcon image;
 	
-	public void createUI(ChoiceHandler cHandler) {
+	public void createUI(ChoiceHandler cHandler)  {
+		
+		
 		
 		window = new JFrame();
-		window.setSize(1000, 800);
+		window.setSize(1000, 750);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.getContentPane().setBackground(Color.magenta);
 		window.setLayout(null);
 		window.setResizable(false);
 		con = window.getContentPane();
 		
+		
 		titleNamePanel = new JPanel();
 		titleNamePanel.setBounds(120, 120, 750, 450);
 		titleNamePanel.setBackground(Color.black);
-		titleNameLabel = new JLabel("ESCAPE THE MYTH");
+		titleNameLabel = new JLabel("\nESCAPE THE MYTH");
 		titleNameLabel.setForeground(Color.white);
 		titleNameLabel.setFont(titleFont);
 		titleNamePanel.add(titleNameLabel);
@@ -141,7 +144,7 @@ public class UI {
 
 		
 		inputPanel = new JPanel();
-		inputPanel.setBounds(250,650,500,50);
+		inputPanel.setBounds(250,625,500,50); 
 		inputPanel.setBackground(Color.black);
 		inputPanel.setLayout(new GridLayout(1,2));
 		
@@ -203,7 +206,25 @@ public class UI {
 		gob.setActionCommand("start");
 		MtPanel.add(gob);
 		
+		gwB = new JButton ("TAKE A HINT");
+		gwB.setBackground(Color.black);
+		gwB.setForeground(Color.white);
+		gwB.setFont(normalFont);
+		gwB.addActionListener(cHandler);
+		gwB.setActionCommand("gwB");
+		MtPanel.add(gwB);
+		gwB.setVisible(false);
 		
+		//should always be in the bottom
+		picturePanel = new JPanel();
+		picturePanel.setBounds(0,0,1000,800);
+		picturePanel.setBackground(Color.black);
+		con.add(picturePanel);
+
+		pictureLabel = new JLabel();
+		image = new ImageIcon(".//image//image0.png");
+		pictureLabel.setIcon(image);
+		picturePanel.add(pictureLabel);
 	
 		window.setVisible(true);
 	}
