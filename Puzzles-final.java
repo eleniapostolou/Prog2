@@ -30,7 +30,7 @@ public class Puzzles extends Game {
 		this.cd = cd;
 	}
 
-	public void instructions(int room) {
+	public void printInstructions(int room) {
 		ui.mainTextArea.setText("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο! \n"+
 		"Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια. \n"+
 		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! \n \n" + getPuzzle(room));
@@ -82,7 +82,7 @@ public class Puzzles extends Game {
 		return column;
 	}
 
-	public void playPuzzle(int room ,String answer) { //This is the method that we are going to call in main in order to play the game.
+	public void playGame(int room ,String answer) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
 		
