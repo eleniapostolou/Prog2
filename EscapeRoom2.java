@@ -84,11 +84,11 @@ public class EscapeRoom2 {
 					break;
 				case 3: 
 					g = new Gallows(room,ui,tm,timer);
-					g.instructions();
+					g.printInstructions();
 					break;
 				case 4: 
 					p = new Puzzles(ui,tm,timer);
-					p.instructions(room);
+					p.printInstructions(room);
 					break;
 				}
 				break;
@@ -105,17 +105,17 @@ public class EscapeRoom2 {
 					break;
 				case 2: 
 					input = ui.jtf.getText();
-					gw.playGuessWho(room, input);
+					gw.playGame(room, input);
 					ui.jtf.setText("");
 					break;
 				case 3: 
 					input = ui.jtf.getText();
-					g.startGame(input);
+					g.playGame(input);
 					ui.jtf.setText("");
 					break;
 				case 4: 
 					input = ui.jtf.getText();
-					p.playPuzzle(room,input);
+					p.playGame(room,input);
 					ui.jtf.setText("");
 					break;
 				}
