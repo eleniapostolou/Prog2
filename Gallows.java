@@ -52,7 +52,7 @@ public class Gallows extends Game{
 	}
 
 	// Method startGame: the main implementation of the Gallows game
-	public void startGame(String s) {
+	public void playGame(String s) {
 
 		boolean y ;
 		ui.mainTextArea.setFont(ui.biggerFont);
@@ -138,7 +138,7 @@ public class Gallows extends Game{
 		return t1 ;
 	}
 	
-	public void instructions() {
+	public void printInstructions() {
 		
 		ui.mainTextArea.setText("Συγχαρητήρια! βρίσκεστε στο 3ο επίπεδο! \n"+
 		"Είστε ένα επίπεδο πριν τη τελευταία δοκιμασία αυτού του δωματίου...\n"+
