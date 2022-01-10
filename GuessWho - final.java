@@ -76,7 +76,7 @@ public class GuessWho extends Game {
 	}
     
 	//Method playGuessWho: the main implementation of the guessing game
-	public void playGuessWho(int room,String answer) {
+	public void playGame(int room,String answer) {
 		
 			
 		if(lives > 0 ) {
