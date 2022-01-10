@@ -55,7 +55,6 @@ public class Countdown {
 	                ui.timeLabel.setText("Time's Over");
 	                tm.resultPanel();
 	    			ui.mainTextArea.setText("\n     GAME OVER \n\n");
-	    			//ui.mainTextArea.append("   Ο χρόνος σας, τελείωσε...");
 	                  
 	            }
 	        }
