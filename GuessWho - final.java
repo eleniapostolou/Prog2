@@ -33,7 +33,7 @@ public class GuessWho extends Game {
 
     //Method printInstructions : prints the game's instructions	
     public void printInstructions(int room) {
-        ui.mainTextArea.setText("Η δεύτερη δοκιμάσια απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
+        ui.mainTextArea.setText("Η δεύτερη δοκιμασία απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
         		"Οι κανόνες του παιχνιδιού είναι η εξής: \n"+
         		"Σας δίνονται σταδιακά 10 hints. Σύμφωνα με αυτά πρέπει να βρείτε το πρόσωπο που αποκρύπτεται.\n"+
         		"Έχετε τρεις προσπάθειες.\n"+
