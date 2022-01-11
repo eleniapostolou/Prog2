@@ -122,7 +122,7 @@ public class UI {
 		welcomePanel.setBackground(Color.black);
 		welcomeText = new JTextArea("Καλωσόρισες στο δωμάτιο. \n Στόχος σου είναι να "
 				+ "δραπετεύσεις περνώντας 4 δοκιμασίες.\n Στην αρχή κάθε δοκιμασίας θα σου δίνονται οδηγίες.\n"
-				+ "Έχεις 20 λεπτά για να δραπετεύσεις!");
+				+ "Έχεις 45 λεπτά για να δραπετεύσεις!");
 		welcomeText.setBounds(120, 120, 750, 450);
 		welcomeText.setBackground(Color.black);
 		welcomeText.setForeground(Color.white);
