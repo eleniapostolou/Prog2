@@ -1,4 +1,4 @@
-package mysteryLab;
+ package mysteryLab;
 /*Crossword.java
  *Copyright 2021 mysteryLab
  */
@@ -8,7 +8,7 @@ package mysteryLab;
 *The Class displays 10 hints which help the player to find the secret person. The player has 3 tries to guess.
 *
 *
-*@version  _____
+*@version  _
 *@author VASILIKI KARAMANOU , MARIOS LIAPIS FOTOU
 */
 public class GuessWho extends Game {
@@ -61,16 +61,16 @@ public class GuessWho extends Game {
 	
 	
 	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for eatch case
-	public void checkAnswer(String name, String who) {
+	public boolean checkAnswer(String name, String who) {
 		
-		if(who.equals(name) && lives>0) {
-			ui.mainTextArea.setText("Μπράβο σου κέρδισες!");
-			EscapeRoom2.miniGame = 3; 
-			ui.cb.setVisible(true);
-			ui.gwB.setVisible(false);
+		if(who.equals(name)) {
+                       return true;
 			
 		} else {
 			ui.mainTextArea.setText("Λάθος Απάντηση.\n");
+                        lives --;
+                        ui.mainTextArea.append("Εχεις "+lives+" ζωες");	
+                        return false;
 			
 		} 
 	}
@@ -79,29 +79,29 @@ public class GuessWho extends Game {
 	public void playGuessWho(int room,String answer) {
 		
 			
-		if(lives > 0 ) {
-					
+		if( lives > 0 ) {
+			
+			boolean flag;
 			answer = answer.toUpperCase();
-			checkAnswer(name, answer);
-			if( lives>1) {
-				lives--;
-				ui.mainTextArea.append("Εχεις "+lives+" ζωες");		
-			} else if( lives==1){
-				ui.timePanel.setVisible(false);
-				tm.resultPanel(); 
-				ui.mainTextArea.setText("\n     GAME OVER \n\n");
-				cd.timer.cancel();
+			flag = checkAnswer(name, answer);
+			
+			if( flag ) {
+				ui.mainTextArea.setText("Μπράβο σου κέρδισες!");
+				EscapeRoom2.miniGame = 3; 
+				ui.cb.setVisible(true);
 				ui.gwB.setVisible(false);
 			}
 					
-					
+		} else if( lives==0 ){
+			ui.timePanel.setVisible(false);
+			tm.resultPanel(); 
+			ui.mainTextArea.setText("\n     GAME OVER \n\n");
+			cd.timer.cancel();
+			ui.gwB.setVisible(false);
 		}
+					
+					
+	}
 		
 		  	
 	}
-		
-			
-		
-		
-}
- 
