@@ -1,5 +1,4 @@
-package mysteryLab;
-/*GuessWho.java
+/*Crossword.java
  *Copyright 2021 mysteryLab
  */
 
@@ -11,12 +10,14 @@ package mysteryLab;
 *@version  _____
 *@author VASILIKI KARAMANOU , MARIOS LIAPIS FOTOU
 */
+package mysteryLab;
 public class GuessWho extends Game {
 	
     // class fields 
     private String name;
     private int column = 5;
     private int lives = 3;
+    private boolean r;
     TransitionManager tm;
     Countdown cd;
     UI ui;
@@ -33,7 +34,7 @@ public class GuessWho extends Game {
 
     //Method printInstructions : prints the game's instructions	
     public void printInstructions(int room) {
-        ui.mainTextArea.setText("Η δεύτερη δοκιμασία απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
+        ui.mainTextArea.setText("Η δεύτερη δοκιμάσια απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
         		"Οι κανόνες του παιχνιδιού είναι η εξής: \n"+
         		"Σας δίνονται σταδιακά 10 hints. Σύμφωνα με αυτά πρέπει να βρείτε το πρόσωπο που αποκρύπτεται.\n"+
         		"Έχετε τρεις προσπάθειες.\n"+
@@ -45,9 +46,10 @@ public class GuessWho extends Game {
         //Method showHint: gives an extra hint to the user
 	public void showHint(int room) {
 		
-		
-		if(column==5){
+		ui.mainTextArea.setFont(ui.miniGameFont);
+		if(column==5 || r){
 			ui.mainTextArea.setText("\n"+questions[room][column]);
+			r = false;
 		} else if(column <14) {
 			ui.mainTextArea.append("\n"+questions[room][column]);
 		} else {
@@ -60,42 +62,45 @@ public class GuessWho extends Game {
 	
 	
 	
-	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for eatch case
-	public void checkAnswer(String name, String who) {
+	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for each case
+	public boolean checkAnswer(String name, String who) {
 		
-		if(who.equals(name) && lives>0) {
-			ui.mainTextArea.setText("Μπράβο σου κέρδισες!");
-			EscapeRoom2.miniGame = 3; 
-			ui.cb.setVisible(true);
-			ui.gwB.setVisible(false);
+		if(who.equals(name)) {
+			return true;
 			
 		} else {
-			ui.mainTextArea.setText("Λάθος Απάντηση.\n");
-			
+			lives--;
+			ui.mainTextArea.setText("\nΛάθος Απάντηση.\n");
+			ui.mainTextArea.append("Εχεις "+lives+" ζωες\n");	
+			ui.mainTextArea.setFont(ui.biggerFont);
+			r = true;
+			return false;
 		} 
 	}
     
 	//Method playGuessWho: the main implementation of the guessing game
-	public void playGame(int room,String answer) {
+	public void playGuessWho(int room,String answer) {
 		
-			
-		if(lives > 0 ) {
-					
+			boolean flag ;		
 			answer = answer.toUpperCase();
-			checkAnswer(name, answer);
-			if( lives>1) {
-				lives--;
-				ui.mainTextArea.append("Εχεις "+lives+" ζωες");		
-			} else if( lives==1){
+			flag = checkAnswer(name, answer);
+			if(flag) {
+				ui.mainTextArea.setText("Μπράβο σου βρήκες το πρόσωπο και περνάς στο 3ο επίπεδο!");
+				EscapeRoom2.miniGame = 3; 
+				ui.cb.setVisible(true);
+				ui.gwB.setVisible(false);
+				ui.mainTextArea.setFont(ui.biggerFont);
+			} else if(lives==0) {
+				ui.gwB.setVisible(false);
 				ui.timePanel.setVisible(false);
 				tm.resultPanel(); 
 				ui.mainTextArea.setText("\n     GAME OVER \n\n");
 				cd.timer.cancel();
-				ui.gwB.setVisible(false);
+				
 			}
 					
 					
-		}
+		
 		
 		  	
 	}
