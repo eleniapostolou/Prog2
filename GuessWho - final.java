@@ -78,8 +78,8 @@ public class GuessWho extends Game {
 		} 
 	}
     
-	//Method playGuessWho: the main implementation of the guessing game
-	public void playGuessWho(int room,String answer) {
+	//Method playGame: the main implementation of the guessing game
+	public void playGame(int room,String answer) {
 		
 			boolean flag ;		
 			answer = answer.toUpperCase();
