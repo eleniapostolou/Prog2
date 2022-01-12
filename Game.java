@@ -132,7 +132,9 @@ abstract public class Game {
 	   answers[3][7] = "ΦΤΕΡΑ";
 	   answers[3][8] = "ΙΚΑΡΙΟ ΠΕΛΑΓΟΣ";
 	}
-	
+	abstract public void printInstructions();
+	abstract public void playGame();
+
 
 }
 
