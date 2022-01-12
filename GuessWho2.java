@@ -1,4 +1,3 @@
- package mysteryLab;
 /*Crossword.java
  *Copyright 2021 mysteryLab
  */
@@ -8,15 +7,17 @@
 *The Class displays 10 hints which help the player to find the secret person. The player has 3 tries to guess.
 *
 *
-*@version  _
+*@version  _____
 *@author VASILIKI KARAMANOU , MARIOS LIAPIS FOTOU
 */
+package mysteryLab;
 public class GuessWho extends Game {
 	
     // class fields 
     private String name;
     private int column = 5;
     private int lives = 3;
+    private boolean r;
     TransitionManager tm;
     Countdown cd;
     UI ui;
@@ -45,9 +46,10 @@ public class GuessWho extends Game {
         //Method showHint: gives an extra hint to the user
 	public void showHint(int room) {
 		
-		
-		if(column==5){
+		ui.mainTextArea.setFont(ui.miniGameFont);
+		if(column==5 || r){
 			ui.mainTextArea.setText("\n"+questions[room][column]);
+			r = false;
 		} else if(column <14) {
 			ui.mainTextArea.append("\n"+questions[room][column]);
 		} else {
@@ -60,48 +62,51 @@ public class GuessWho extends Game {
 	
 	
 	
-	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for eatch case
+	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for each case
 	public boolean checkAnswer(String name, String who) {
 		
 		if(who.equals(name)) {
-                       return true;
+			return true;
 			
 		} else {
-			ui.mainTextArea.setText("Λάθος Απάντηση.\n");
-                        lives --;
-                        ui.mainTextArea.append("Εχεις "+lives+" ζωες");	
-                        return false;
-			
+			lives--;
+			ui.mainTextArea.setText("\nΛάθος Απάντηση.\n");
+			ui.mainTextArea.append("Εχεις "+lives+" ζωες\n");	
+			ui.mainTextArea.setFont(ui.biggerFont);
+			r = true;
+			return false;
 		} 
 	}
     
 	//Method playGuessWho: the main implementation of the guessing game
 	public void playGuessWho(int room,String answer) {
 		
-			
-		if( lives > 0 ) {
-			
-			boolean flag;
+			boolean flag ;		
 			answer = answer.toUpperCase();
 			flag = checkAnswer(name, answer);
-			
-			if( flag ) {
-				ui.mainTextArea.setText("Μπράβο σου κέρδισες!");
+			if(flag) {
+				ui.mainTextArea.setText("Μπράβο σου βρήκες το πρόσωπο και περνάς στο 3ο επίπεδο!");
 				EscapeRoom2.miniGame = 3; 
 				ui.cb.setVisible(true);
 				ui.gwB.setVisible(false);
+				ui.mainTextArea.setFont(ui.biggerFont);
+			} else if(lives==0) {
+				ui.gwB.setVisible(false);
+				ui.timePanel.setVisible(false);
+				tm.resultPanel(); 
+				ui.mainTextArea.setText("\n     GAME OVER \n\n");
+				cd.timer.cancel();
+				
 			}
 					
-		} else if( lives==0 ){
-			ui.timePanel.setVisible(false);
-			tm.resultPanel(); 
-			ui.mainTextArea.setText("\n     GAME OVER \n\n");
-			cd.timer.cancel();
-			ui.gwB.setVisible(false);
-		}
 					
-					
-	}
+		
 		
 		  	
 	}
+		
+			
+		
+		
+}
+ 
