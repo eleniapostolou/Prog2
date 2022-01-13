@@ -75,7 +75,7 @@ public class UI {
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(120, 120, 750, 450);
 		choiceButtonPanel.setBackground(Color.black);
-		choiceButtonPanel.setLayout(new GridLayout(2,2));
+		choiceButtonPanel.setLayout(new GridLayout(2, 2));
 		window.add(choiceButtonPanel);
 		
 		b1 = new JButton("ΚΙΡΚΗ");
