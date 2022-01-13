@@ -20,6 +20,7 @@ import mysteryLab.EscapeRoom2.ChoiceHandler;
 
 public class UI {
 	
+	//the creation of the variables that are used
 	JFrame window;
 	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel;
 	JLabel titleNameLabel, timeLabel;
@@ -28,7 +29,7 @@ public class UI {
 	JTextField jtf ;
 	Container con ;
 	Gallows g;
-	Font titleFont = new Font("Century Gothic", Font.PLAIN, 80);
+	Font titleFont = new Font("Century Gothic", Font.PLAIN, 80); 
 	Font normalFont = new Font("Century Gothic", Font.PLAIN, 30);
 	Font miniGameFont = new Font("Century Gothic", Font.PLAIN, 22);
 	Font biggerFont = new Font("Century Gothic", Font.PLAIN, 40);
@@ -39,10 +40,11 @@ public class UI {
 	private JLabel pictureLabel;
 	private ImageIcon image;
 	
-	public void createUI(ChoiceHandler cHandler)  {
+	public void createUI(ChoiceHandler cHandler)  { 
 		
 		
 		
+		//a new window is created for the game 
 		window = new JFrame();
 		window.setSize(1000, 750);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,6 +54,7 @@ public class UI {
 		con = window.getContentPane();
 		
 		
+		//this panel is made to show the game's title
 		titleNamePanel = new JPanel();
 		titleNamePanel.setBounds(120, 120, 750, 450);
 		titleNamePanel.setBackground(Color.black);
@@ -60,6 +63,7 @@ public class UI {
 		titleNameLabel.setFont(titleFont);
 		titleNamePanel.add(titleNameLabel);
 		
+		//creating the "start" button
 		startButtonPanel = new JPanel();
 		startButtonPanel.setBounds(330, 400, 325, 100);
 		startButtonPanel.setBackground(Color.black);
@@ -74,6 +78,7 @@ public class UI {
 		window.add(titleNamePanel);
 		window.add(startButtonPanel);
 		
+		//four buttons are created to allow the player to enter the room of his choice
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(120, 120, 750, 450);
 		choiceButtonPanel.setBackground(Color.black);
@@ -117,6 +122,7 @@ public class UI {
 		b4.setActionCommand("c4");
 		choiceButtonPanel.add(b4);
 		
+		//it's the beginning of the game, general instructions of the game are given
 		welcomePanel = new JPanel();
 		welcomePanel.setBounds(120, 120, 750, 450);
 		welcomePanel.setBackground(Color.black);
@@ -134,6 +140,7 @@ public class UI {
 		window.add(welcomePanel);
 		con.add(welcomePanel);
 		
+		//the "continue" button is activated in order to proceed the game
 		wb = new JButton("CONTINUE");
 		wb.setBackground(Color.black);
 		wb.setForeground(Color.white);
@@ -143,7 +150,7 @@ public class UI {
 		wb.setActionCommand("wb");
 		welcomePanel.add(wb);
 
-		
+		//each game starts here
 		inputPanel = new JPanel();
 		inputPanel.setBounds(250,625,500,50); 
 		inputPanel.setBackground(Color.black);
@@ -153,6 +160,7 @@ public class UI {
 		jtf.setFont(miniGameFont);
 		inputPanel.add(jtf);
 		
+		//the "enter" button is activated in order for the player to submit the answer
 		enterB = new JButton ("ENTER");
 		enterB.setBackground(Color.black);
 		enterB.setForeground(Color.white);
@@ -162,6 +170,7 @@ public class UI {
 		inputPanel.add(enterB);
 		con.add(inputPanel);
 		
+		//the text area is created in order for the player to write down the answer
 		MtPanel = new JPanel();
 		MtPanel.setBounds(90, 50, 800, 650);
 		MtPanel.setBackground(Color.black);
@@ -175,6 +184,7 @@ public class UI {
 		mainTextArea.setEditable(false);
 		MtPanel.add(mainTextArea);
 		
+		//the "continue" button is activated in order to proceed to the next level
 		cb = new JButton("CONTINUE");
 		cb.setBackground(Color.black);
 		cb.setForeground(Color.white);
@@ -188,6 +198,7 @@ public class UI {
 		window.add(MtPanel);
 		con.add(MtPanel);
 		
+		//this panel is made to show the count down 
 		timePanel = new JPanel();
 		timePanel.setBounds(330, 5, 300, 40);
 		timePanel.setBackground(Color.black);
@@ -198,6 +209,7 @@ public class UI {
 		window.add(timePanel);
 		con.add(timePanel);
 		
+		//at the end of the game, this button restarts the game if the player wishes to play again
 		gob = new JButton("PLAY AGAIN");
 		gob.setBackground(Color.black);
 		gob.setForeground(Color.white);
@@ -207,6 +219,7 @@ public class UI {
 		gob.setActionCommand("start");
 		MtPanel.add(gob);
 		
+		//this button is activated for the second game in order to show more information to the player to find the answer
 		gwB = new JButton ("TAKE A HINT");
 		gwB.setBackground(Color.black);
 		gwB.setForeground(Color.white);
@@ -216,6 +229,7 @@ public class UI {
 		MtPanel.add(gwB);
 		gwB.setVisible(false);
 		
+		//the background image is loaded
 		picturePanel = new JPanel();
 		picturePanel.setBounds(0,0,1000,800);
 		picturePanel.setBackground(Color.black);
@@ -226,6 +240,7 @@ public class UI {
 		pictureLabel.setIcon(image);
 		picturePanel.add(pictureLabel);
 	
+		//all the above are visible at this point
 		window.setVisible(true);
 	}
 
