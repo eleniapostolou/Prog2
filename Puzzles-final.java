@@ -23,18 +23,19 @@ public class Puzzles extends Game {
 	Countdown cd;
 	UI ui;
 	
-
+	//The constructor is created and the variables are initialised.
+	//The parameters depend on the room the player chose.
 	public Puzzles(UI ui, TransitionManager tm, Countdown cd) {
 		this.ui = ui;
 		this.tm = tm;
 		this.cd = cd;
 	}
 
+	//The instructions are printed with the first puzzle.
 	public void printInstructions(int room) {
 		ui.mainTextArea.setText("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο! \n"+
 		"Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια. \n"+
 		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! \n \n" + getPuzzle(room));
-	
 	}
 
 	public String getPuzzle(int room) { //We get the puzzle for each room.
@@ -44,7 +45,6 @@ public class Puzzles extends Game {
 	public void getResult(int room, String answer) {
 
 		//This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
-		//We use a boolean flag in order to stop the loop
 		//We use a counter in order to always keep track in which puzzle the player currently is.
 
 			String change = answer.toUpperCase();
@@ -60,7 +60,7 @@ public class Puzzles extends Game {
 				} else {
 					ui.timePanel.setVisible(false);
 					tm.resultPanel();
-					ui.mainTextArea.setText("\n\n YOU ARE A WINNER BABY !" );
+					ui.mainTextArea.setText("\n\n YOU ARE A WINNER BABY !");
 					cd.timer.cancel();
 				}
 
@@ -68,8 +68,6 @@ public class Puzzles extends Game {
 			} else {
 				ui.mainTextArea.setText(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
 			}
-
-
 	}
 
 	public int setColumn() { //We update our location at the tables.
@@ -85,22 +83,15 @@ public class Puzzles extends Game {
 	public void playGame(int room ,String answer) { //This is the method that we are going to call in main in order to play the game.
 		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
 
-		
 		if (counter < 3) {
-			
 			getResult(room,answer);
 			if (counter < 3) {
 			ui.mainTextArea.append("\n\n"+getPuzzle(room));
 			}
 		}
-		
-
 	}
-
-
-
-
 }
+
 
 
 
