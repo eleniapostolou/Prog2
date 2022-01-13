@@ -1,11 +1,9 @@
 package mysteryLab;
 
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
-
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,9 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
 import mysteryLab.EscapeRoom2.ChoiceHandler;
-
 
 public class UI {
 	
@@ -24,7 +20,7 @@ public class UI {
 	JFrame window;
 	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel;
 	JLabel titleNameLabel, timeLabel;
-	JButton startButton, b1, b2, b3, b4,enterB,gob;
+	JButton startButton, b1, b2, b3, b4, enterB, gob;
 	JTextArea welcomeText, mainTextArea;
 	JTextField jtf ;
 	Container con ;
@@ -41,8 +37,6 @@ public class UI {
 	private ImageIcon image;
 	
 	public void createUI(ChoiceHandler cHandler)  { 
-		
-		
 		
 		//a new window is created for the game 
 		window = new JFrame();
@@ -152,9 +146,9 @@ public class UI {
 
 		//each game starts here
 		inputPanel = new JPanel();
-		inputPanel.setBounds(250,625,500,50); 
+		inputPanel.setBounds(250, 625, 500, 50); 
 		inputPanel.setBackground(Color.black);
-		inputPanel.setLayout(new GridLayout(1,2));
+		inputPanel.setLayout(new GridLayout(1, 2));
 		
 		jtf = new JTextField();
 		jtf.setFont(miniGameFont);
@@ -231,7 +225,7 @@ public class UI {
 		
 		//the background image is loaded
 		picturePanel = new JPanel();
-		picturePanel.setBounds(0,0,1000,800);
+		picturePanel.setBounds(0, 0, 1000, 800);
 		picturePanel.setBackground(Color.black);
 		con.add(picturePanel);
 
@@ -243,9 +237,4 @@ public class UI {
 		//all the above are visible at this point
 		window.setVisible(true);
 	}
-
-		
-
-
-
 }
