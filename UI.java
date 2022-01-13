@@ -22,8 +22,8 @@ public class UI {
 	JLabel titleNameLabel, timeLabel;
 	JButton startButton, b1, b2, b3, b4, enterB, gob;
 	JTextArea welcomeText, mainTextArea;
-	JTextField jtf ;
-	Container con ;
+	JTextField jtf;
+	Container con;
 	Gallows g;
 	Font titleFont = new Font("Century Gothic", Font.PLAIN, 80); 
 	Font normalFont = new Font("Century Gothic", Font.PLAIN, 30);
@@ -46,7 +46,6 @@ public class UI {
 		window.setLayout(null);
 		window.setResizable(false);
 		con = window.getContentPane();
-		
 		
 		//this panel is made to show the game's title
 		titleNamePanel = new JPanel();
@@ -78,7 +77,6 @@ public class UI {
 		choiceButtonPanel.setBackground(Color.black);
 		choiceButtonPanel.setLayout(new GridLayout(2,2));
 		window.add(choiceButtonPanel);
-		
 		
 		b1 = new JButton("ΚΙΡΚΗ");
 		b1.setBackground(Color.black);
