@@ -1,5 +1,3 @@
-package mysteryLab;
-
 /*Gallows.java
  *Copyright 2021 mysteryLab
  */
@@ -14,6 +12,7 @@ package mysteryLab;
 *@author EFTHYMIOS KONTOES , KOSTANTINOS SPATHAS 
 */
 
+package mysteryLab;
 
 public class Gallows extends Game {
 	
