@@ -1,5 +1,3 @@
-package mysteryLab;
-
 /*Puzzles.java
  *Copyright 2021 mysteryLab
  */
@@ -13,38 +11,39 @@ package mysteryLab;
 *@version ____
 *@author ELENI APOSTOLOU, KONSTANTINA SOTIROPOULOU
 */
-
+package mysteryLab;
 
 public class Puzzles extends Game {
-
+	
+	//Class fields
 	private int column = 15; //Refers to the position of the questions and answers at these tables.
 	private int counter = 0; //It will be used in order to define in which puzzle the player currently is.
 	TransitionManager tm;
 	Countdown cd;
 	UI ui;
 	
-	//The constructor is created and the variables are initialised.
-	//The parameters depend on the room the player chose.
+	//Constructor
 	public Puzzles(UI ui, TransitionManager tm, Countdown cd) {
 		this.ui = ui;
 		this.tm = tm;
 		this.cd = cd;
 	}
 
-	//The instructions are printed with the first puzzle.
+	//Method printInstructions: The instructions are printed with the first puzzle.
 	public void printInstructions(int room) {
 		ui.mainTextArea.setText("Συγχαρητήρια! Έφτασες στο τελευταίο επίπεδο! \n"+
 		"Τώρα, για να αποδράσεις επιτέλους, πρέπει να λύσεις αυτούς τους τρεις γρίφους, χρησιμοποιώντας όσα έμαθες στα προηγούμενα στάδια. \n"+
 		"Χρησιμοποίησε τον χρόνο που σου απομένει έξυπνα! Ας ξεκινήσουμε και καλή επιτυχία! \n \n" + getPuzzle(room));
 	}
 
-	public String getPuzzle(int room) { //We get the puzzle for each room.
+	//Method getPuzzle: It gets the puzzle of each room.
+	public String getPuzzle(int room) { 
 		 return questions[room][getColumn()];
 	}
 
+	//Method getResult: It checks if the input is the correct one.
 	public void getResult(int room, String answer) {
 
-		//This is a method that interacts with the player. The player inputs his/her answer until he/she finds the correct one.
 		//We use a counter in order to always keep track in which puzzle the player currently is.
 
 			String change = answer.toUpperCase();
@@ -70,18 +69,20 @@ public class Puzzles extends Game {
 			}
 	}
 
-	public int setColumn() { //We update our location at the tables.
+	//Method setColumn: It updates the location of the tables.
+	public int setColumn() { 
 
 		column = column + 1;
 		return column;
 	}
 
+	//Method getColumn: It returns the current column.
 	public int getColumn() {
 		return column;
 	}
 
-	public void playGame(int room ,String answer) { //This is the method that we are going to call in main in order to play the game.
-		//We call in repeat the puzzle and then the answer from the player until he/she finds all three or the time is up.
+	//Method playGame: the main implementation of the puzzle game.
+	public void playGame(int room ,String answer) { 
 
 		if (counter < 3) {
 			getResult(room,answer);
