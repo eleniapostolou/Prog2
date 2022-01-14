@@ -45,28 +45,26 @@ public class Puzzles extends Game {
 	public void getResult(int room, String answer) {
 
 		//We use a counter in order to always keep track in which puzzle the player currently is.
+		String change = answer.toUpperCase();
 
-			String change = answer.toUpperCase();
-
-			if (change.equals(answers[room][getColumn() - 9])) {
+		if (change.equals(answers[room][getColumn() - 9])) {		
 				
-				
-				column = setColumn();
-				counter += 1;
+			column = setColumn();
+			counter += 1;
 
-				if (counter < 3) {
-					ui.mainTextArea.setText(" Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
-				} else {
-					ui.timePanel.setVisible(false);
-					tm.resultPanel();
-					ui.mainTextArea.setText("\n\n YOU ARE A WINNER BABY !");
-					cd.timer.cancel();
-				}
-
-
+			if (counter < 3) {
+				ui.mainTextArea.setText("Συγχαρητήρια! Το έλυσες σωστα! Προχωράμε στον επόμενο γρίφο");
 			} else {
-				ui.mainTextArea.setText(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
+				ui.timePanel.setVisible(false);
+				tm.resultPanel();
+				ui.mainTextArea.setText("\n\n YOU ARE A WINNER BABY !");
+				cd.timer.cancel();
 			}
+
+		} else {
+			ui.mainTextArea.setText(" Ουπς... έκανες λάθος! Προσπάθησε πάλι!");
+		}
+		
 	}
 
 	//Method setColumn: It updates the location of the tables.
@@ -82,10 +80,10 @@ public class Puzzles extends Game {
 	}
 
 	//Method playGame: the main implementation of the puzzle game.
-	public void playGame(int room ,String answer) { 
+	public void playGame(int room, String answer) { 
 
 		if (counter < 3) {
-			getResult(room,answer);
+			getResult(room, answer);
 			if (counter < 3) {
 			ui.mainTextArea.append("\n\n"+getPuzzle(room));
 			}
