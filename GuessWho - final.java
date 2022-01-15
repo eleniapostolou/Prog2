@@ -1,4 +1,4 @@
-/*Crossword.java
+/*GuessWho.java
  *Copyright 2021 mysteryLab
  */
 
