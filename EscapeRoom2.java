@@ -102,15 +102,18 @@ public class EscapeRoom {
 					cr.printInstructions();
 					break;
 				case 2:
+					ui.CWPanel.setVisible(false);
 					gw = new GuessWho(room,ui,tm,timer);
 					gw.printInstructions(room);
 					ui.gwB.setVisible(true);
 					break;
 				case 3: 
+					ui.CWPanel.setVisible(false);
 					g = new Gallows(room,ui,tm,timer);
 					g.printInstructions();
 					break;
 				case 4: 
+					ui.CWPanel.setVisible(false);
 					p = new Puzzles(ui,tm,timer);
 					p.printInstructions(room);
 					break;
