@@ -86,7 +86,7 @@ public class GuessWho extends Game {
 			flag = checkAnswer(name, answer);
 			if(flag) {
 				ui.mainTextArea.setText("Μπράβο σου βρήκες το πρόσωπο και περνάς στο 3ο επίπεδο!");
-				EscapeRoom2.miniGame = 3; 
+				EscapeRoom.miniGame = 3; 
 				ui.cb.setVisible(true);
 				ui.gwB.setVisible(false);
 				ui.mainTextArea.setFont(ui.biggerFont);
