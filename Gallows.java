@@ -102,7 +102,7 @@ public class Gallows extends Game {
 		} else if (leftlet == 0) { 
 			
 			ui.mainTextArea.append(" \n Βρήκατε τη λέξη! Περνάτε στο επόμενο επίπεδο");
-			EscapeRoom2.miniGame = 4; 
+			EscapeRoom.miniGame = 4; 
 			ui.cb.setVisible(true);
 			
 		}
