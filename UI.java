@@ -16,6 +16,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,14 +26,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import mysteryLab.EscapeRoom2.ChoiceHandler;
+import mysteryLab.EscapeRoom.ChoiceHandler;
 
 public class UI {
 	
 	//the creation of the variables that are used
 	JFrame window;
-	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel;
-	JLabel titleNameLabel, timeLabel;
+	JPanel titleNamePanel, startButtonPanel, choiceButtonPanel, welcomePanel, inputPanel, MtPanel, timePanel, CWPanel;
+	JLabel titleNameLabel, timeLabel, CWLabel;
 	JButton startButton, b1, b2, b3, b4, enterB, gob;
 	JTextArea welcomeText, mainTextArea;
 	JTextField jtf;
@@ -46,7 +48,8 @@ public class UI {
 	JButton gwB;
 	private JPanel picturePanel;
 	private JLabel pictureLabel;
-	private ImageIcon image;
+	protected ImageIcon image;
+	Image image2;
 	
 	//Method createUI: It creates the essential windows, panels and buttons.
 	public void createUI(ChoiceHandler cHandler)  { 
@@ -248,4 +251,36 @@ public class UI {
 		//The whole window is set visible
 		window.setVisible(true);
 	}
+	
+	public void showCrossword(int roomNumber) {
+		
+		CWPanel = new JPanel();
+		CWPanel.setBounds(200,500,200,250);
+		CWPanel.setBackground(Color.black);
+		MtPanel.add(CWPanel);
+
+		CWLabel = new JLabel();
+		switch (roomNumber) {
+		case 0:
+			image = new ImageIcon(".//Images//circe.png");
+			break;
+		case 1:
+			image = new ImageIcon(".//Images//thiseas.png");
+			break;
+		case 2:
+			image = new ImageIcon(".//Images//persefoni.png");
+			break;
+		case 3:
+			image = new ImageIcon(".//Images//ikaros.png");
+			break;
+		}
+		
+		Image image2 = image.getImage(); 
+		Image newimg = image2.getScaledInstance(400, 270,  java.awt.Image.SCALE_SMOOTH);
+		image = new ImageIcon(newimg);
+		CWLabel.setIcon(image);
+		CWPanel.add(CWLabel);
+		
+	}
+
 }
