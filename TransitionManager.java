@@ -24,6 +24,7 @@ public class TransitionManager {
 		ui = userInt;
 	}
 	
+	//Method showMainScreen:it sets visible the title panel and the start button 
 	public void showMainScreen() {
 		ui.choiceButtonPanel.setVisible(false);
 		ui.welcomePanel.setVisible(false);
@@ -35,6 +36,8 @@ public class TransitionManager {
 		ui.startButtonPanel.setVisible(true);	
 	}
 	
+	
+	//Method showRoomChoices:it sets visible the 4 button of the rooms 
 	public void showRoomChoices() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
@@ -46,6 +49,8 @@ public class TransitionManager {
 
 	}
 	
+	
+	//Method welcomePlayer:it appears some relevant instructions for the game 
 	public void welcomePlayer() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
@@ -58,6 +63,7 @@ public class TransitionManager {
 	
 	}
 	
+	//Method inputP:it shows the input panel
 	public void inputP() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
@@ -68,6 +74,8 @@ public class TransitionManager {
 		ui.welcomePanel.setVisible(true);
 	}
 	
+	
+	//Method room Prep:it prepares the window for each game 
 	public void roomPrep() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
@@ -79,6 +87,9 @@ public class TransitionManager {
 		ui.MtPanel.setVisible(true);
 		ui.mainTextArea.setFont(ui.miniGameFont);
 	}
+	
+	
+	//Method resultPanel:it prepares the window for the game's results 
 	public void resultPanel() {
 		ui.titleNamePanel.setVisible(false);
 		ui.startButtonPanel.setVisible(false);
