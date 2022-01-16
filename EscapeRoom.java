@@ -108,12 +108,10 @@ public class EscapeRoom {
 					ui.gwB.setVisible(true);
 					break;
 				case 3: 
-					ui.CWPanel.setVisible(false);
 					g = new Gallows(room,ui,tm,timer);
 					g.printInstructions();
 					break;
 				case 4: 
-					ui.CWPanel.setVisible(false);
 					p = new Puzzles(ui,tm,timer);
 					p.printInstructions(room);
 					break;
