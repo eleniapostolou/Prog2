@@ -32,7 +32,7 @@ public class GuessWho extends Game {
         	this.cd = cd;
         }
 
-    //Method printInstructions : prints the game's instructions	
+    //Method printInstructions :it prints the game's instructions	
     public void printInstructions(int room) {
         ui.mainTextArea.setText("Η δεύτερη δοκιμάσια απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
         		"Οι κανόνες του παιχνιδιού είναι η εξής: \n"+
@@ -43,7 +43,7 @@ public class GuessWho extends Game {
     }
 
 	
-        //Method showHint: gives an extra hint to the user
+        //Method showHint:it gives an extra hint to the user
 	public void showHint(int room) {
 		
 		ui.mainTextArea.setFont(ui.miniGameFont);
@@ -62,7 +62,7 @@ public class GuessWho extends Game {
 	
 	
 	
-	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for each case
+	//Method checkAnswer:it checks if the answer that user gives is the correct one and returns boolean value true or false for each case
 	public boolean checkAnswer(String name, String who) {
 		
 		if(who.equals(name)) {
@@ -98,15 +98,8 @@ public class GuessWho extends Game {
 				cd.timer.cancel();
 				
 			}
-					
-					
-		
-		
-		  	
+						
 	}
-		
-			
-		
 		
 }
  
