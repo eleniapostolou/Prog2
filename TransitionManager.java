@@ -1,8 +1,25 @@
+/*TransitionManager.java
+ *Copyright 2021 mysteryLab
+ */
+
+/**
+*The class TransitionManager swaps the GUI according to the player's choices as the game procides.
+*
+*
+*@version  ___
+*@author EFTHYMIS KONTOES, ELENI NTOUSI
+*/
+
+ 
 package mysteryLab;
 
  
 public class TransitionManager {
+	
+	//Class Fields
 	UI ui;
+	
+        //Constructor
 	public TransitionManager(UI userInt) {
 		ui = userInt;
 	}
