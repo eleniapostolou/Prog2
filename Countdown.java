@@ -23,16 +23,18 @@ public class Countdown {
 	//The time in seconds that the timer runs for
 	private int i;
 	UI ui;
+	TransitionManager tm;
 	
 	//Constructor
-	public Countdown(UI userInterface) {
+	public Countdown(UI userInterface, TransitionManager tm) {
 		timer = new Timer();
 		i = 2700;
 		ui = userInterface;
+		this.tm = tm;
 		
 	}
 	
-	//Method geti(): Returns the value of i (the remaining time in seconds)
+	//Method geti(): Returns the value of variable i (the remaining time in seconds)
 	public int geti() {
 		
 		return i;
@@ -48,13 +50,14 @@ public class Countdown {
 	            ui.timeLabel.setText("Time left: " + i/60 + ":" + (i%60/10 == 0 ? "0" : "") + i%60); //Display the time in the form XX:XX
 	            i--;
 
-	            if (i < 0) { //If the time is over cancel the timer and display a message saying "Time Over"
+	            if (i < 0) { //If the time is over cancel the timer and display a message saying "Time's Over"
 	                timer.cancel();
-	                ui.timeLabel.setText("Time Over");
+	                ui.timeLabel.setText("Time's Over");
+	                tm.resultPanel();
+	    			ui.mainTextArea.setText("\n     GAME OVER \n\n");
 	                  
 	            }
 	        }
 	    }, 0, 1000);
 	}
 }
-
