@@ -22,6 +22,9 @@ public class Puzzles extends Game {
 	Countdown cd;
 	UI ui;
 	
+	//Empty Constructor for unit testing
+	public Puzzles() {};
+	
 	//Constructor
 	public Puzzles(UI ui, TransitionManager tm, Countdown cd) {
 		this.ui = ui;
