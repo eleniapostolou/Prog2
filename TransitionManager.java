@@ -19,7 +19,7 @@ public class TransitionManager {
 	//Class Fields
 	UI ui;
 	
-    //Constructor
+        //Constructor
 	public TransitionManager(UI userInt) {
 		ui = userInt;
 	}
