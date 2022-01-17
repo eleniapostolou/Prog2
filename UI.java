@@ -242,7 +242,7 @@ public class UI {
 		con.add(picturePanel);
 
 		pictureLabel = new JLabel();
-		image = new ImageIcon(".//image//image0.png");
+		image = new ImageIcon(getClass().getClassLoader().getResource("background.jpg"));
 		pictureLabel.setIcon(image);
 		picturePanel.add(pictureLabel);
 	
@@ -263,16 +263,16 @@ public class UI {
 		CWLabel = new JLabel();
 		switch (roomNumber) { //Load the right image based on the chosen room
 		case 0:
-			image = new ImageIcon(".//Images//circe.png");
+			image = new ImageIcon(getClass().getClassLoader().getResource("circe.png"));
 			break;
 		case 1:
-			image = new ImageIcon(".//Images//thiseas.png");
+			image = new ImageIcon(getClass().getClassLoader().getResource("thiseas.png"));
 			break;
 		case 2:
-			image = new ImageIcon(".//Images//persefoni.png");
+			image = new ImageIcon(getClass().getClassLoader().getResource("persefoni.png"));
 			break;
 		case 3:
-			image = new ImageIcon(".//Images//ikaros.png");
+			image = new ImageIcon(getClass().getClassLoader().getResource("ikaros.png"));
 			break;
 		}
 		
