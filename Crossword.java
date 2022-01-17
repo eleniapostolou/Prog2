@@ -3,153 +3,119 @@
  */
 
 /**
-*The class Crossword extends superclass Game (main class). The class implements the crossword puzzle game.
+*The class Crossword extends the superclass Game. The class implements the crossword puzzle game.
 *The Class displays 4 questions to which the user must give the correct answer in order to move on to the next
 *level of the game.
 *
 *
 *@version  _____
-*@author ELENI NTOUSI , PATRA ROXANI 
+*@author PATRA ROXANI,ELENI NTOUSI  
 */
-
 package mysteryLab;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+
+import javax.swing.ImageIcon;
 
 public class Crossword extends Game {
-
-	/*Class fields*/
-	private int[] success = new int[4]; //number of right answers
-	private String roomName; //the name of the chosen room
 	
-	/*Constructor*/
-	public Crossword(String name) {
-		roomName=name;
+	//Class fields
+	private int[] success = new int[4]; //number of right answers
+	private int roomNumber; //the number of the chosen room
+	private String roomName; //the name of the chosen room
+	boolean continueGame = true;
+	UI ui;
+	
+	//Constructor
+	public Crossword (int room, String name, UI userInterface) {
+		roomNumber = room;
+		roomName = name;
+		ui = userInterface; 
 	}
 	
-	/*Method getRoomName: Getter method for the field roomName*/
+	//Method getRoomName: Getter method for the field roomName
 	public String getRoomName() {
 		return roomName;
 	}
 	
-	
-	/* Method printInstructions : prints the game's instructions*/
+	//Method printInstructions: prints the game's instructions on the screen
 	public void printInstructions() {
-	    System.out.println("Καλώς ήρθατε στο Escape room: Greek mythology Edition ");
-	    System.out.println("Επιλέξατε να αποδράσετε από το δωμάτιο του/της " + getRoomName());
-	    System.out.println("Ο χρόνος σας ξεκινάει από τώρα!");
-	    System.out.println("Η πρώτη δοκιμάσια απαιτεί να αξιοποιήσετε το γνωστικό σας υπόβαθρο και να λύσετε το παρακάτω σταυρόλεξο");
-	    System.out.println("Οι κανόνες του παιχνιδιού είναι η εξής:");
-	    System.out.println("Πρέπει να ανακαλύψετε και τις 4 κρυμμένες λέξεις προκειμένου να προχωρήσετε στο επόμενο στάδιο.");
-	    System.out.println("Μπορείτε να επιλέγετε κάθε φορά την ερώτηση στην οποία θέλετε να απαντήσετε χωρίς να υπάρχει περιορισμός προσπαθειών");
-	    System.out.println("Καλή Επιτυχία!");
-	    System.out.println();
-	
+		ui.mainTextArea.setText("Καλώς ήρθατε στο Escape room!\n" 
+	    +"Επιλέξατε να αποδράσετε από το δωμάτιο του/της " + getRoomName() + "\n"
+	    +"Η πρώτη δοκιμάσια απαιτεί να αξιοποιήσετε το \nγνωστικό σας υπόβαθρο και να λύσετε το παρακάτω σταυρόλεξο.\n"
+	    +"Οι κανόνες του παιχνιδιού είναι η εξής: \n"
+	    +"Πρέπει να ανακαλύψετε και τις 4 κρυμμένες λέξεις \nπροκειμένου να προχωρήσετε στο επόμενο στάδιο.\n"
+	    +"Μπορείτε να προσπαθήσετε όσες φορές χρειαστεί!\n"
+	    +"Καλή Επιτυχία!\n" + printSelectionMenu());
+		
 	}
+	
+	//Method playGame: the main implementation of the crossword game
+	/**
+	 * @param answer
+	 */
+	public void playGame(String answer) {
 		
-	/* Method playGame: the main implementation of the crossword game*/
-	public void playGame(int roomNumber) {
-		
-		boolean continueGame;
-		printInstructions(); //Prints the game's instructions
-		
-		do {
+		if (continueGame) {
+			ui.mainTextArea.setText(printSelectionMenu() + "\n"); //Print the game's instructions
+			
+			checkAnswers(answer); //Check if the user answered correctly
+			
 			continueGame = false;
-			
-			printSelectionMenu(roomNumber); //Prints the question selection menu
-		    	
-			int qNumber = getQNumber(); //Get the question number that the user wants to answer
-					
-			printAnswerResult(roomNumber, qNumber); //Print the appropriate message according to the user's answer
-		
 			for (int i = 0; i < success.length; i++) { //Check if the user has answered all the questions correctly 
-				if (success[i] == 0) {
-					continueGame = true;
+				if (success[i] == 0) { //If there is at least one question that has not been answered
+					continueGame = true; //Continue playing
 				}
 			}
 			
-		} while(continueGame); //Until the user answers correctly all of the 4 questions
+		} 
 		
-	System.out.println("ΜΠΡΑΒΟ! Αποδράσατε από το πρώτο στάδιο του δωματίου! "
-			+ "Είστε έτοιμοι να προχωρήσετε!"); //Prints success message
+		if (!continueGame) { //If all the questions have been answered correctly
+			ui.mainTextArea.setText("ΜΠΡΑΒΟ! Αποδράσατε από το πρώτο στάδιο του δωματίου! "
+									+ "Είστε έτοιμοι να προχωρήσετε!"); //Print success message
+			ui.showCrossword(roomNumber); //Show the finished crossword picture
+			ui.CWPanel.setVisible(true);
+			
+			EscapeRoom.miniGame = 2; //Proceed to the next minigame
+			ui.cb.setVisible(true); //Set continue button visible
+		}
+		
 	}
 	
+	//Method printSelectionMenu: Creates and returns a string with the crossword questions of the chosen room
+	public String printSelectionMenu() {
+		
+		String quest = "";
+		for (int i=0;i<4;i++) {
+			
+			quest += (i+1) + ") " + questions[roomNumber][i] + "\n";
+		}
+		quest += "Δώστε την απάντηση σας!\n";
+		return quest;
+	}
 	
-	/* Method checkAnswers: checks if the answer that user gives is the correct one 
-	 * and returns boolean value true or false for eatch case*/
-	public boolean checkAnswers(int num, int roomNumber) {
-		System.out.println("Δώστε την απάντηση σας!");
-		Scanner input2 = new Scanner(System.in);
-		String answer;
-		answer = input2.nextLine();
+	//Method checkAnswers: checks if the answer that the user gives is the correct one 
+	//and returns boolean value true or false for each case
+	public boolean checkAnswers(String answer) {
+		
 		String change = answer.toUpperCase(); //Convert every answer in Upper letters in order to match the correct answer
-		if (change.equals(answers[roomNumber][(num-1)])) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	/*Method printSelectionMenu: prints the crossword questions of the chosen room*/
-	public void printSelectionMenu(int roomNumber) {
-		for (int i=0;i<4;i++) { /*prints the question selection menu*/
-			System.out.println(questions[roomNumber][i]); 
-		}
-		System.out.println();
-		System.out.println("Διαλέξτε την ερώτηση που θέλετε να απαντήσετε!");
-	}
-	
-	/*Method getQNumber: Reads and checks the question number that the user wants to answer*/
-	public int getQNumber() {
-		Scanner input1 = new Scanner(System.in);
-		int qnumber =  0; //the number of the chosen question that user wants to answer
-		boolean continueLoop = true;
-		do {
-			do {
-				try {
-					qnumber=input1.nextInt();
-					if (qnumber!=1 && qnumber!=2 && qnumber!=3 && qnumber!=4) { //validation check
-					System.out.println("Ο αριθμός που διαλέξατε δεν αντιστοιχεί σε κάποια ερώτηση! Παρακαλώ προσπαθείστε ξανά!");
-					}
-					continueLoop = false;
-				} catch (InputMismatchException e) {
-					System.out.println("Λάθος τύπος δεδομένων!");
-					input1.nextLine();
-					System.out.println("Παρακαλώ εισάγετε ακέραιο αριθμό που να αντιστοιχεί σε μία ερώτηση!");
-				}
-			} while (continueLoop);
-		} while (qnumber!=1 && qnumber!=2 && qnumber!=3 && qnumber!=4);
-		
-		return qnumber;
-		
-	}
-	
-	/*Method printAnswerResult: Prints the appropriate message based on the given answer by the user:
-	 * Correct answer: Prints success message
-	 * Wrong answer: Prints error message
-	 * Else: Prints already answered question message */
-	public void printAnswerResult(int roomNumber, int qNumber) {
-		if(checkAnswers(qNumber, roomNumber)) { //checks if the answer that user gives is the correct one or not
-			if (success[qNumber-1] == 0) {
-				success[qNumber-1]++;
-				System.out.println("Συγχαρητήρια! Βρήκατε την λέξη!");
-			} else {
-				System.out.println("Έχεις απαντήσει ήδη αυτή την ερώτηση. Παρακαλώ διάλεξε μία άλλη ερώτηση!");
-			}
-			
-		} else {
-			System.out.println("Λάθος! Προσπαθήστε ξανά!");
+		boolean result = false;
+		for (int i = 0; i < 4; i++) {
+			if (change.equals(answers[roomNumber][(i)])) { //If the given answer is correct
+				result = true;
+				if (success[i] == 0) {
+					success[i]++;
+					ui.mainTextArea.append("Συγχαρητήρια! Βρήκατε την λέξη!\n"); //Print success message
+				} else {
+					ui.mainTextArea.append("Έχετε απαντήσει ήδη αυτή την ερώτηση. "
+							+ "Απάντηστε μία άλλη ερώτηση!"); //Print already answered question message
+				}	
+			} 
 		}
 		
-		
+		if (!result) { //If the given answer is wrong
+			ui.mainTextArea.append("Λάθος! Προσπαθήστε ξανά!"); //Print error message
+		}
+		return result; 
 	}
 	
-	
-	
+
 }
-	
-	
-	
-
-
-
