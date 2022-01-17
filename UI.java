@@ -250,15 +250,18 @@ public class UI {
 		window.setVisible(true);
 	}
 	
+	//Method showCrossword: It displays the correct solved crossword picture when the user successfully
+	//completes the first level of the game (Crossword game)
 	public void showCrossword(int roomNumber) {
 		
+		//Create a panel for the image
 		CWPanel = new JPanel();
 		CWPanel.setBounds(200,500,200,250);
 		CWPanel.setBackground(Color.black);
 		MtPanel.add(CWPanel);
 
 		CWLabel = new JLabel();
-		switch (roomNumber) {
+		switch (roomNumber) { //Load the right image based on the chosen room
 		case 0:
 			image = new ImageIcon(".//Images//circe.png");
 			break;
@@ -274,7 +277,7 @@ public class UI {
 		}
 		
 		Image image2 = image.getImage(); 
-		Image newimg = image2.getScaledInstance(400, 270,  java.awt.Image.SCALE_SMOOTH);
+		Image newimg = image2.getScaledInstance(400, 270, java.awt.Image.SCALE_SMOOTH);
 		image = new ImageIcon(newimg);
 		CWLabel.setIcon(image);
 		CWPanel.add(CWLabel);
