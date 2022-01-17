@@ -13,7 +13,7 @@
 package mysteryLab;
 public class GuessWho extends Game {
 	
-    // class fields 
+    //Class fields 
     private String name;
     private int column = 5;
     private int lives = 3;
@@ -25,13 +25,14 @@ public class GuessWho extends Game {
 
     // Constructor
     public GuessWho(int room,UI ui,TransitionManager tm,Countdown cd) {
+    	
         	name = answers[room][4];
         	this.ui = ui;
         	this.tm = tm;
         	this.cd = cd;
         }
 
-    //Method printInstructions : prints the game's instructions	
+    //Method printInstructions :it prints the game's instructions	
     public void printInstructions(int room) {
         ui.mainTextArea.setText("Η δεύτερη δοκιμάσια απαιτεί να μαντέψετε το όνομα ενός μυθικού προσώπου \n"+
         		"Οι κανόνες του παιχνιδιού είναι η εξής: \n"+
@@ -42,29 +43,28 @@ public class GuessWho extends Game {
     }
 
 	
-      //Method showHint: gives an extra hint to the user
-      public void showHint(int room) {
+        //Method showHint:it gives an extra hint to the user
+	public void showHint(int room) {
 		
-     	ui.mainTextArea.setFont(ui.miniGameFont);
-	if (column==5 || r){
-		ui.mainTextArea.setText("\n"+questions[room][column]);
-		r = false;
-	} else if (column <14) {
-		ui.mainTextArea.append("\n"+questions[room][column]);
-	} else {
-		ui.gwB.setVisible(false);
-		ui.mainTextArea.append("\n Δεν έχεις άλλα HINTS ,πρέπει να μαντέψεις ");
-	}
-	column+=1;
+		ui.mainTextArea.setFont(ui.miniGameFont);
+		if(column==5 || r){
+			ui.mainTextArea.setText("\n"+questions[room][column]);
+			r = false;
+		} else if(column <14) {
+			ui.mainTextArea.append("\n"+questions[room][column]);
+		} else {
+			ui.gwB.setVisible(false);
+			ui.mainTextArea.append("\n Δεν έχεις άλλα HINTS ,πρέπει να μαντέψεις ");
+		}
+		column+=1;
 	
 	} 
 	
 	
-	
-	//Method checkAnswer: checks if the answer that user gives is the correct one and returns boolean value true or false for each case
+	//Method checkAnswer:it checks if the answer that user gives is the correct one and returns boolean value true or false for each case
 	public boolean checkAnswer(String name, String who) {
 		
-		if who.equals(name)) {
+		if(who.equals(name)) {
 			return true;
 			
 		} else {
@@ -83,13 +83,13 @@ public class GuessWho extends Game {
 			boolean flag ;		
 			answer = answer.toUpperCase();
 			flag = checkAnswer(name, answer);
-			if (flag) {
+			if(flag) {
 				ui.mainTextArea.setText("Μπράβο σου βρήκες το πρόσωπο και περνάς στο 3ο επίπεδο!");
 				EscapeRoom.miniGame = 3; 
 				ui.cb.setVisible(true);
 				ui.gwB.setVisible(false);
 				ui.mainTextArea.setFont(ui.biggerFont);
-			} else if (lives==0) {
+			} else if(lives==0) {
 				ui.gwB.setVisible(false);
 				ui.timePanel.setVisible(false);
 				tm.resultPanel(); 
@@ -97,7 +97,7 @@ public class GuessWho extends Game {
 				cd.timer.cancel();
 				
 			}
-		  	
-	}				
+						
+	}
 		
 }
