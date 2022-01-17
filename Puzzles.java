@@ -57,7 +57,7 @@ public class Puzzles extends Game {
 			} else {
 				ui.timePanel.setVisible(false);
 				tm.resultPanel();
-				ui.mainTextArea.setText("\n\n YOU ARE A WINNER BABY !");
+				ui.mainTextArea.setText("\n\n        YOU ARE A \n          WINNER!");
 				cd.timer.cancel();
 			}
 
